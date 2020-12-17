@@ -1,0 +1,46 @@
+# dataset.yaml
+
+## Where the samples will be written
+save_data: example_save_data
+## Where the vocab(s) will be written
+src_vocab: vocab.src
+tgt_vocab: vocab.src
+# Prevent overwriting existing files in the folder
+overwrite: False
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: data/dataset1_train_src_trunc.txt
+        path_tgt: data/dataset1_train_tgt.txt
+    valid:
+        path_src: data/dataset1_val_src_trunc.txt
+        path_tgt: data/dataset1_val_tgt.txt
+
+# Vocabulary files that were just created
+src_vocab: vocab.src
+tgt_vocab: vocab.src
+
+# Train on a single GPU
+world_size: 1
+gpu_ranks: [0]
+
+# Where to save the checkpoints
+save_model: /home/ubuntu/model
+train_steps: 10000
+
+#valid_steps: 10
+#valid_steps: 500
+
+encoder_type: brnn
+enc_layers: 2
+decoder_type: rnn
+dec_layers: 2 
+rnn_size: 256 
+global_attention: general
+batch_size: 32
+word_vec_size: 256
+
+copy_attn: true
+bridge: true
+reuse_copy_attn: true

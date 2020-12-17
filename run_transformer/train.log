@@ -1,0 +1,532 @@
+[2020-12-07 14:37:11,583 INFO] Missing transforms field for corpus_1 data, set to default: [].
+[2020-12-07 14:37:11,583 WARNING] Corpus corpus_1's weight should be given. We default it to 1 for you.
+[2020-12-07 14:37:11,583 INFO] Missing transforms field for valid data, set to default: [].
+[2020-12-07 14:37:11,583 INFO] Parsed 2 corpora from -data.
+[2020-12-07 14:37:11,583 INFO] Get special vocabs from Transforms: {'src': set(), 'tgt': set()}.
+[2020-12-07 14:37:11,584 INFO] Loading vocab from text file...
+[2020-12-07 14:37:11,584 INFO] Loading src vocabulary from vocab.src
+[2020-12-07 14:37:11,586 INFO] Loaded src vocab has 1000 tokens.
+[2020-12-07 14:37:11,587 INFO] Loading tgt vocabulary from vocab.src
+[2020-12-07 14:37:11,590 INFO] Loaded tgt vocab has 1000 tokens.
+[2020-12-07 14:37:11,590 INFO] Building fields with vocab in counters...
+[2020-12-07 14:37:11,592 INFO]  * tgt vocab size: 1004.
+[2020-12-07 14:37:11,593 INFO]  * src vocab size: 1002.
+[2020-12-07 14:37:11,593 INFO]  * src vocab size = 1002
+[2020-12-07 14:37:11,594 INFO]  * tgt vocab size = 1004
+[2020-12-07 14:37:11,594 INFO] Building model...
+[2020-12-07 14:37:15,156 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(1002, 256, padding_idx=1)
+        )
+      )
+    )
+    (transformer): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=256, out_features=256, bias=True)
+          (linear_values): Linear(in_features=256, out_features=256, bias=True)
+          (linear_query): Linear(in_features=256, out_features=256, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=256, out_features=256, bias=True)
+          (linear_values): Linear(in_features=256, out_features=256, bias=True)
+          (linear_query): Linear(in_features=256, out_features=256, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(1004, 256, padding_idx=1)
+        )
+      )
+    )
+    (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=256, out_features=256, bias=True)
+          (linear_values): Linear(in_features=256, out_features=256, bias=True)
+          (linear_query): Linear(in_features=256, out_features=256, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=256, out_features=256, bias=True)
+          (linear_values): Linear(in_features=256, out_features=256, bias=True)
+          (linear_query): Linear(in_features=256, out_features=256, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3, inplace=False)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=256, out_features=256, bias=True)
+          (linear_values): Linear(in_features=256, out_features=256, bias=True)
+          (linear_query): Linear(in_features=256, out_features=256, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=256, out_features=256, bias=True)
+          (linear_values): Linear(in_features=256, out_features=256, bias=True)
+          (linear_query): Linear(in_features=256, out_features=256, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=256, out_features=256, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=256, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=256, bias=True)
+          (layer_norm): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (relu): ReLU()
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+        (layer_norm_2): LayerNorm((256,), eps=1e-06, elementwise_affine=True)
+        (drop): Dropout(p=0.3, inplace=False)
+      )
+    )
+  )
+  (generator): CopyGenerator(
+    (linear): Linear(in_features=256, out_features=1004, bias=True)
+    (linear_copy): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+[2020-12-07 14:37:15,158 INFO] encoder: 2887168
+[2020-12-07 14:37:15,158 INFO] decoder: 3673325
+[2020-12-07 14:37:15,158 INFO] * number of parameters: 6560493
+[2020-12-07 14:37:15,161 INFO] Starting training on GPU: [0]
+[2020-12-07 14:37:15,161 INFO] Start training loop and validate every 10000 steps...
+[2020-12-07 14:37:15,161 INFO] corpus_1's transforms: TransformPipe()
+[2020-12-07 14:37:15,162 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+/home/ubuntu/.local/lib/python3.6/site-packages/torchtext/data/field.py:359: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  var = torch.tensor(arr, dtype=self.dtype, device=device)
+[2020-12-07 14:37:24,145 INFO] Step 50/10000; acc:  10.20; ppl: 55.10; xent: 4.01; lr: 0.10000; 39505/1197 tok/s;      9 sec
+[2020-12-07 14:37:32,230 INFO] Step 100/10000; acc:  17.12; ppl: 40.11; xent: 3.69; lr: 0.10000; 43632/1380 tok/s;     17 sec
+[2020-12-07 14:37:41,658 INFO] Step 150/10000; acc:  20.20; ppl: 32.32; xent: 3.48; lr: 0.10000; 38802/1145 tok/s;     26 sec
+[2020-12-07 14:37:50,406 INFO] Step 200/10000; acc:  20.30; ppl: 31.10; xent: 3.44; lr: 0.10000; 42938/1277 tok/s;     35 sec
+[2020-12-07 14:37:59,336 INFO] Step 250/10000; acc:  22.12; ppl: 25.97; xent: 3.26; lr: 0.10000; 42609/1233 tok/s;     44 sec
+[2020-12-07 14:38:00,286 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:38:00,290 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:38:00,303 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:38:00,317 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:38:08,770 INFO] Step 300/10000; acc:  23.15; ppl: 22.61; xent: 3.12; lr: 0.10000; 37087/1193 tok/s;     54 sec
+[2020-12-07 14:38:17,079 INFO] Step 350/10000; acc:  25.58; ppl: 19.89; xent: 2.99; lr: 0.10000; 43261/1326 tok/s;     62 sec
+[2020-12-07 14:38:23,071 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:38:23,081 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:38:23,085 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:38:23,087 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:38:23,090 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:38:23,096 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:38:26,611 INFO] Step 400/10000; acc:  25.04; ppl: 18.85; xent: 2.94; lr: 0.10000; 37920/1245 tok/s;     71 sec
+[2020-12-07 14:38:34,936 INFO] Step 450/10000; acc:  26.72; ppl: 17.35; xent: 2.85; lr: 0.10000; 41421/1411 tok/s;     80 sec
+[2020-12-07 14:38:43,674 INFO] Step 500/10000; acc:  29.68; ppl: 16.36; xent: 2.79; lr: 0.10000; 42735/1332 tok/s;     89 sec
+[2020-12-07 14:38:52,160 INFO] Step 550/10000; acc:  31.63; ppl: 13.64; xent: 2.61; lr: 0.10000; 35570/1411 tok/s;     97 sec
+[2020-12-07 14:38:59,837 INFO] Step 600/10000; acc:  32.06; ppl: 13.79; xent: 2.62; lr: 0.10000; 41201/1596 tok/s;    105 sec
+[2020-12-07 14:39:08,805 INFO] Step 650/10000; acc:  34.80; ppl: 12.14; xent: 2.50; lr: 0.10000; 37340/1364 tok/s;    114 sec
+[2020-12-07 14:39:16,395 INFO] Step 700/10000; acc:  35.47; ppl: 12.00; xent: 2.48; lr: 0.10000; 39715/1579 tok/s;    121 sec
+[2020-12-07 14:39:23,645 INFO] Step 750/10000; acc:  37.31; ppl: 11.13; xent: 2.41; lr: 0.10000; 39415/1707 tok/s;    128 sec
+[2020-12-07 14:39:26,700 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:39:26,726 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:39:26,730 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:39:26,732 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:39:26,746 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:39:26,762 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:39:32,593 INFO] Step 800/10000; acc:  35.92; ppl: 12.83; xent: 2.55; lr: 0.10000; 36011/1367 tok/s;    137 sec
+[2020-12-07 14:39:41,289 INFO] Step 850/10000; acc:  35.17; ppl: 14.45; xent: 2.67; lr: 0.10000; 41449/1314 tok/s;    146 sec
+[2020-12-07 14:39:49,854 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:39:51,432 INFO] Step 900/10000; acc:  37.13; ppl: 12.83; xent: 2.55; lr: 0.10000; 38360/1134 tok/s;    156 sec
+[2020-12-07 14:39:59,842 INFO] Step 950/10000; acc:  37.79; ppl: 12.62; xent: 2.54; lr: 0.10000; 41096/1313 tok/s;    165 sec
+[2020-12-07 14:40:08,041 INFO] Step 1000/10000; acc:  38.40; ppl: 11.72; xent: 2.46; lr: 0.10000; 41747/1373 tok/s;    173 sec
+[2020-12-07 14:40:16,992 INFO] Step 1050/10000; acc:  39.73; ppl: 11.81; xent: 2.47; lr: 0.10000; 37090/1236 tok/s;    182 sec
+[2020-12-07 14:40:25,778 INFO] Step 1100/10000; acc:  39.80; ppl: 12.66; xent: 2.54; lr: 0.10000; 42449/1270 tok/s;    191 sec
+[2020-12-07 14:40:34,967 INFO] Step 1150/10000; acc:  40.74; ppl: 12.12; xent: 2.49; lr: 0.10000; 42727/1208 tok/s;    200 sec
+[2020-12-07 14:40:44,282 INFO] Step 1200/10000; acc:  41.27; ppl: 11.51; xent: 2.44; lr: 0.10000; 37591/1162 tok/s;    209 sec
+[2020-12-07 14:40:52,728 INFO] Step 1250/10000; acc:  41.59; ppl: 11.17; xent: 2.41; lr: 0.10000; 42655/1332 tok/s;    218 sec
+[2020-12-07 14:40:58,270 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:40:58,274 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:40:58,289 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:40:58,304 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:40:58,330 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:41:02,396 INFO] Step 1300/10000; acc:  42.08; ppl: 10.91; xent: 2.39; lr: 0.10000; 36980/1132 tok/s;    227 sec
+[2020-12-07 14:41:10,881 INFO] Step 1350/10000; acc:  40.22; ppl: 11.60; xent: 2.45; lr: 0.10000; 42519/1319 tok/s;    236 sec
+[2020-12-07 14:41:19,924 INFO] Step 1400/10000; acc:  41.38; ppl: 11.22; xent: 2.42; lr: 0.10000; 42572/1273 tok/s;    245 sec
+[2020-12-07 14:41:21,397 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:41:21,402 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:41:21,404 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:41:21,408 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:41:21,414 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:41:29,385 INFO] Step 1450/10000; acc:  42.37; ppl:  9.96; xent: 2.30; lr: 0.10000; 36778/1227 tok/s;    254 sec
+[2020-12-07 14:41:37,099 INFO] Step 1500/10000; acc:  42.52; ppl:  9.97; xent: 2.30; lr: 0.10000; 41343/1550 tok/s;    262 sec
+[2020-12-07 14:41:46,547 INFO] Step 1550/10000; acc:  42.96; ppl:  9.46; xent: 2.25; lr: 0.10000; 38016/1265 tok/s;    271 sec
+[2020-12-07 14:41:54,057 INFO] Step 1600/10000; acc:  43.84; ppl:  9.03; xent: 2.20; lr: 0.10000; 39877/1635 tok/s;    279 sec
+[2020-12-07 14:42:01,999 INFO] Step 1650/10000; acc:  45.18; ppl:  8.74; xent: 2.17; lr: 0.10000; 41063/1565 tok/s;    287 sec
+[2020-12-07 14:42:10,347 INFO] Step 1700/10000; acc:  45.12; ppl:  8.40; xent: 2.13; lr: 0.10000; 35675/1442 tok/s;    295 sec
+[2020-12-07 14:42:18,211 INFO] Step 1750/10000; acc:  44.67; ppl:  9.04; xent: 2.20; lr: 0.10000; 40460/1559 tok/s;    303 sec
+[2020-12-07 14:42:24,889 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:42:24,911 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:42:24,914 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:42:24,917 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:42:24,930 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:42:24,947 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:42:27,249 INFO] Step 1800/10000; acc:  44.84; ppl:  8.80; xent: 2.17; lr: 0.10000; 36993/1334 tok/s;    312 sec
+[2020-12-07 14:42:35,924 INFO] Step 1850/10000; acc:  42.91; ppl: 10.39; xent: 2.34; lr: 0.10000; 41913/1339 tok/s;    321 sec
+[2020-12-07 14:42:44,175 INFO] Step 1900/10000; acc:  42.46; ppl:  9.81; xent: 2.28; lr: 0.10000; 41669/1392 tok/s;    329 sec
+[2020-12-07 14:42:47,966 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:42:53,369 INFO] Step 1950/10000; acc:  44.62; ppl:  9.32; xent: 2.23; lr: 0.10000; 37233/1219 tok/s;    338 sec
+[2020-12-07 14:43:01,737 INFO] Step 2000/10000; acc:  44.18; ppl:  9.40; xent: 2.24; lr: 0.10000; 41354/1343 tok/s;    347 sec
+[2020-12-07 14:43:11,436 INFO] Step 2050/10000; acc:  44.61; ppl:  9.30; xent: 2.23; lr: 0.10000; 38114/1161 tok/s;    356 sec
+[2020-12-07 14:43:20,113 INFO] Step 2100/10000; acc:  46.21; ppl:  9.34; xent: 2.23; lr: 0.10000; 41827/1245 tok/s;    365 sec
+[2020-12-07 14:43:28,309 INFO] Step 2150/10000; acc:  46.37; ppl:  8.99; xent: 2.20; lr: 0.10000; 41900/1367 tok/s;    373 sec
+[2020-12-07 14:43:37,727 INFO] Step 2200/10000; acc:  47.58; ppl:  8.67; xent: 2.16; lr: 0.10000; 37696/1139 tok/s;    383 sec
+[2020-12-07 14:43:46,503 INFO] Step 2250/10000; acc:  47.28; ppl:  8.73; xent: 2.17; lr: 0.10000; 42315/1258 tok/s;    391 sec
+[2020-12-07 14:43:55,526 INFO] Step 2300/10000; acc:  47.06; ppl:  8.78; xent: 2.17; lr: 0.10000; 42913/1228 tok/s;    400 sec
+[2020-12-07 14:43:56,169 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:43:56,174 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:43:56,190 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:43:56,204 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:43:56,230 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:43:56,239 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:44:05,163 INFO] Step 2350/10000; acc:  45.58; ppl:  9.07; xent: 2.21; lr: 0.10000; 37244/1153 tok/s;    410 sec
+[2020-12-07 14:44:13,563 INFO] Step 2400/10000; acc:  47.31; ppl:  8.65; xent: 2.16; lr: 0.10000; 43045/1364 tok/s;    418 sec
+[2020-12-07 14:44:19,332 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:44:19,333 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:44:19,336 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:44:19,344 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:44:22,915 INFO] Step 2450/10000; acc:  46.02; ppl:  8.50; xent: 2.14; lr: 0.10000; 37646/1260 tok/s;    428 sec
+[2020-12-07 14:44:30,853 INFO] Step 2500/10000; acc:  45.77; ppl:  8.11; xent: 2.09; lr: 0.10000; 41049/1486 tok/s;    436 sec
+[2020-12-07 14:44:39,362 INFO] Step 2550/10000; acc:  46.03; ppl:  8.51; xent: 2.14; lr: 0.10000; 42508/1415 tok/s;    444 sec
+[2020-12-07 14:44:47,818 INFO] Step 2600/10000; acc:  47.51; ppl:  7.50; xent: 2.02; lr: 0.10000; 35590/1425 tok/s;    453 sec
+[2020-12-07 14:44:55,326 INFO] Step 2650/10000; acc:  47.87; ppl:  7.51; xent: 2.02; lr: 0.10000; 40802/1667 tok/s;    460 sec
+[2020-12-07 14:45:01,735 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:45:04,430 INFO] Step 2700/10000; acc:  48.54; ppl:  7.62; xent: 2.03; lr: 0.10000; 37417/1347 tok/s;    469 sec
+[2020-12-07 14:45:12,242 INFO] Step 2750/10000; acc:  48.16; ppl:  7.78; xent: 2.05; lr: 0.10000; 40262/1525 tok/s;    477 sec
+[2020-12-07 14:45:20,001 INFO] Step 2800/10000; acc:  48.48; ppl:  7.59; xent: 2.03; lr: 0.10000; 40908/1576 tok/s;    485 sec
+[2020-12-07 14:45:22,701 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:45:22,705 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:45:22,708 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:45:22,722 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:45:22,740 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:45:28,780 INFO] Step 2850/10000; acc:  47.04; ppl:  8.23; xent: 2.11; lr: 0.10000; 36497/1332 tok/s;    494 sec
+[2020-12-07 14:45:37,621 INFO] Step 2900/10000; acc:  45.77; ppl:  8.89; xent: 2.19; lr: 0.10000; 42482/1281 tok/s;    502 sec
+[2020-12-07 14:45:45,390 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:45:47,407 INFO] Step 2950/10000; acc:  45.54; ppl:  8.88; xent: 2.18; lr: 0.10000; 38088/1189 tok/s;    512 sec
+[2020-12-07 14:45:55,591 INFO] Step 3000/10000; acc:  47.44; ppl:  8.41; xent: 2.13; lr: 0.10000; 41270/1382 tok/s;    520 sec
+[2020-12-07 14:46:03,664 INFO] Step 3050/10000; acc:  48.85; ppl:  7.80; xent: 2.05; lr: 0.10000; 41649/1377 tok/s;    529 sec
+[2020-12-07 14:46:12,946 INFO] Step 3100/10000; acc:  47.58; ppl:  8.09; xent: 2.09; lr: 0.10000; 37447/1172 tok/s;    538 sec
+[2020-12-07 14:46:21,805 INFO] Step 3150/10000; acc:  48.28; ppl:  8.48; xent: 2.14; lr: 0.10000; 42326/1244 tok/s;    547 sec
+[2020-12-07 14:46:30,770 INFO] Step 3200/10000; acc:  48.12; ppl:  8.08; xent: 2.09; lr: 0.10000; 41882/1231 tok/s;    556 sec
+[2020-12-07 14:46:40,187 INFO] Step 3250/10000; acc:  49.93; ppl:  7.76; xent: 2.05; lr: 0.10000; 37660/1149 tok/s;    565 sec
+[2020-12-07 14:46:48,499 INFO] Step 3300/10000; acc:  49.12; ppl:  8.01; xent: 2.08; lr: 0.10000; 42182/1338 tok/s;    573 sec
+[2020-12-07 14:46:53,848 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:46:53,852 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:46:53,868 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:46:53,884 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:46:53,911 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:46:53,921 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:46:53,928 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:46:53,930 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:46:53,933 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:46:58,330 INFO] Step 3350/10000; acc:  48.85; ppl:  8.06; xent: 2.09; lr: 0.10000; 37521/1139 tok/s;    583 sec
+[2020-12-07 14:47:07,316 INFO] Step 3400/10000; acc:  48.29; ppl:  8.13; xent: 2.10; lr: 0.10000; 42255/1263 tok/s;    592 sec
+[2020-12-07 14:47:16,427 INFO] Step 3450/10000; acc:  47.73; ppl:  8.21; xent: 2.11; lr: 0.10000; 42286/1264 tok/s;    601 sec
+[2020-12-07 14:47:17,429 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:47:25,315 INFO] Step 3500/10000; acc:  49.39; ppl:  7.21; xent: 1.98; lr: 0.10000; 36285/1345 tok/s;    610 sec
+[2020-12-07 14:47:33,023 INFO] Step 3550/10000; acc:  48.51; ppl:  7.45; xent: 2.01; lr: 0.10000; 41438/1538 tok/s;    618 sec
+[2020-12-07 14:47:41,966 INFO] Step 3600/10000; acc:  49.85; ppl:  7.20; xent: 1.97; lr: 0.10000; 37165/1357 tok/s;    627 sec
+[2020-12-07 14:47:49,523 INFO] Step 3650/10000; acc:  49.98; ppl:  7.12; xent: 1.96; lr: 0.10000; 40252/1640 tok/s;    634 sec
+[2020-12-07 14:47:57,650 INFO] Step 3700/10000; acc:  50.11; ppl:  7.03; xent: 1.95; lr: 0.10000; 41061/1561 tok/s;    642 sec
+[2020-12-07 14:47:59,447 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:48:06,133 INFO] Step 3750/10000; acc:  49.55; ppl:  7.22; xent: 1.98; lr: 0.10000; 35692/1366 tok/s;    651 sec
+[2020-12-07 14:48:14,197 INFO] Step 3800/10000; acc:  49.28; ppl:  7.47; xent: 2.01; lr: 0.10000; 40737/1494 tok/s;    659 sec
+[2020-12-07 14:48:20,903 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:48:20,906 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:48:20,909 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:48:20,922 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:48:20,940 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:48:23,558 INFO] Step 3850/10000; acc:  48.90; ppl:  7.50; xent: 2.01; lr: 0.10000; 37175/1273 tok/s;    668 sec
+[2020-12-07 14:48:32,104 INFO] Step 3900/10000; acc:  48.10; ppl:  8.16; xent: 2.10; lr: 0.10000; 41598/1314 tok/s;    677 sec
+[2020-12-07 14:48:40,286 INFO] Step 3950/10000; acc:  47.74; ppl:  7.86; xent: 2.06; lr: 0.10000; 41216/1426 tok/s;    685 sec
+[2020-12-07 14:48:43,686 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:48:49,393 INFO] Step 4000/10000; acc:  48.83; ppl:  7.76; xent: 2.05; lr: 0.10000; 36797/1249 tok/s;    694 sec
+[2020-12-07 14:48:57,929 INFO] Step 4050/10000; acc:  48.42; ppl:  7.90; xent: 2.07; lr: 0.10000; 41437/1288 tok/s;    703 sec
+[2020-12-07 14:49:07,939 INFO] Step 4100/10000; acc:  49.45; ppl:  7.68; xent: 2.04; lr: 0.10000; 38349/1118 tok/s;    713 sec
+[2020-12-07 14:49:16,614 INFO] Step 4150/10000; acc:  49.71; ppl:  7.83; xent: 2.06; lr: 0.10000; 41716/1252 tok/s;    721 sec
+[2020-12-07 14:49:25,090 INFO] Step 4200/10000; acc:  50.12; ppl:  7.57; xent: 2.02; lr: 0.10000; 42229/1325 tok/s;    730 sec
+[2020-12-07 14:49:29,515 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:49:34,152 INFO] Step 4250/10000; acc:  50.94; ppl:  7.11; xent: 1.96; lr: 0.10000; 37283/1182 tok/s;    739 sec
+[2020-12-07 14:49:42,958 INFO] Step 4300/10000; acc:  50.26; ppl:  7.41; xent: 2.00; lr: 0.10000; 41979/1286 tok/s;    748 sec
+[2020-12-07 14:49:52,168 INFO] Step 4350/10000; acc:  49.96; ppl:  7.58; xent: 2.03; lr: 0.10000; 42363/1209 tok/s;    757 sec
+[2020-12-07 14:49:52,292 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:49:52,308 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:49:52,324 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:49:52,350 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:49:52,359 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:49:52,364 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:49:52,366 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:49:52,369 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:49:52,376 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:50:01,722 INFO] Step 4400/10000; acc:  49.66; ppl:  7.64; xent: 2.03; lr: 0.10000; 37519/1170 tok/s;    767 sec
+[2020-12-07 14:50:10,350 INFO] Step 4450/10000; acc:  50.40; ppl:  7.40; xent: 2.00; lr: 0.10000; 42551/1337 tok/s;    775 sec
+[2020-12-07 14:50:19,637 INFO] Step 4500/10000; acc:  48.89; ppl:  7.23; xent: 1.98; lr: 0.10000; 37224/1283 tok/s;    784 sec
+[2020-12-07 14:50:27,404 INFO] Step 4550/10000; acc:  50.59; ppl:  6.79; xent: 1.92; lr: 0.10000; 40472/1533 tok/s;    792 sec
+[2020-12-07 14:50:35,545 INFO] Step 4600/10000; acc:  50.66; ppl:  6.89; xent: 1.93; lr: 0.10000; 41657/1480 tok/s;    800 sec
+[2020-12-07 14:50:44,446 INFO] Step 4650/10000; acc:  50.96; ppl:  6.75; xent: 1.91; lr: 0.10000; 35825/1386 tok/s;    809 sec
+[2020-12-07 14:50:51,508 INFO] Step 4700/10000; acc:  52.09; ppl:  6.38; xent: 1.85; lr: 0.10000; 40015/1764 tok/s;    816 sec
+[2020-12-07 14:50:57,561 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:50:57,581 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:50:57,606 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:51:00,784 INFO] Step 4750/10000; acc:  50.61; ppl:  6.87; xent: 1.93; lr: 0.10000; 37063/1320 tok/s;    826 sec
+[2020-12-07 14:51:08,710 INFO] Step 4800/10000; acc:  49.87; ppl:  7.29; xent: 1.99; lr: 0.10000; 40046/1473 tok/s;    834 sec
+[2020-12-07 14:51:17,030 INFO] Step 4850/10000; acc:  51.20; ppl:  7.00; xent: 1.95; lr: 0.10000; 41517/1428 tok/s;    842 sec
+[2020-12-07 14:51:19,412 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:51:19,425 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:51:19,442 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:51:26,141 INFO] Step 4900/10000; acc:  48.78; ppl:  7.35; xent: 2.00; lr: 0.10000; 35929/1287 tok/s;    851 sec
+[2020-12-07 14:51:34,755 INFO] Step 4950/10000; acc:  48.81; ppl:  7.82; xent: 2.06; lr: 0.10000; 42572/1321 tok/s;    860 sec
+[2020-12-07 14:51:42,164 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:51:44,445 INFO] Step 5000/10000; acc:  49.36; ppl:  7.68; xent: 2.04; lr: 0.10000; 37780/1181 tok/s;    869 sec
+[2020-12-07 14:51:45,312 INFO] Saving checkpoint /home/ubuntu/transformer-model_step_5000.pt
+[2020-12-07 14:51:53,957 INFO] Step 5050/10000; acc:  49.64; ppl:  7.67; xent: 2.04; lr: 0.10000; 37578/1157 tok/s;    879 sec
+[2020-12-07 14:52:02,083 INFO] Step 5100/10000; acc:  50.95; ppl:  6.98; xent: 1.94; lr: 0.10000; 41549/1364 tok/s;    887 sec
+[2020-12-07 14:52:11,427 INFO] Step 5150/10000; acc:  50.71; ppl:  7.21; xent: 1.98; lr: 0.10000; 37277/1180 tok/s;    896 sec
+[2020-12-07 14:52:20,006 INFO] Step 5200/10000; acc:  51.69; ppl:  7.18; xent: 1.97; lr: 0.10000; 42018/1282 tok/s;    905 sec
+[2020-12-07 14:52:28,825 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:52:28,830 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:52:29,920 INFO] Step 5250/10000; acc:  51.29; ppl:  7.08; xent: 1.96; lr: 0.10000; 38452/1113 tok/s;    915 sec
+[2020-12-07 14:52:38,684 INFO] Step 5300/10000; acc:  51.18; ppl:  7.17; xent: 1.97; lr: 0.10000; 41646/1248 tok/s;    924 sec
+[2020-12-07 14:52:46,905 INFO] Step 5350/10000; acc:  51.49; ppl:  6.93; xent: 1.94; lr: 0.10000; 42104/1351 tok/s;    932 sec
+[2020-12-07 14:52:51,846 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:52:51,862 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:52:51,897 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:52:51,906 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:52:51,912 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:52:51,913 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:52:51,916 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:52:51,923 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:52:56,497 INFO] Step 5400/10000; acc:  50.92; ppl:  7.28; xent: 1.99; lr: 0.10000; 37569/1197 tok/s;    941 sec
+[2020-12-07 14:53:05,463 INFO] Step 5450/10000; acc:  51.27; ppl:  7.05; xent: 1.95; lr: 0.10000; 42185/1265 tok/s;    950 sec
+[2020-12-07 14:53:14,678 INFO] Step 5500/10000; acc:  50.25; ppl:  7.33; xent: 1.99; lr: 0.10000; 42754/1256 tok/s;    960 sec
+[2020-12-07 14:53:23,394 INFO] Step 5550/10000; acc:  52.16; ppl:  6.36; xent: 1.85; lr: 0.10000; 35857/1378 tok/s;    968 sec
+[2020-12-07 14:53:30,815 INFO] Step 5600/10000; acc:  51.08; ppl:  6.53; xent: 1.88; lr: 0.10000; 40722/1659 tok/s;    976 sec
+[2020-12-07 14:53:39,546 INFO] Step 5650/10000; acc:  51.84; ppl:  6.41; xent: 1.86; lr: 0.10000; 36560/1399 tok/s;    984 sec
+[2020-12-07 14:53:47,050 INFO] Step 5700/10000; acc:  52.14; ppl:  6.35; xent: 1.85; lr: 0.10000; 39899/1665 tok/s;    992 sec
+[2020-12-07 14:53:55,078 INFO] Step 5750/10000; acc:  52.75; ppl:  6.33; xent: 1.85; lr: 0.10000; 41629/1535 tok/s;   1000 sec
+[2020-12-07 14:53:56,551 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:53:56,571 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:53:56,574 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:53:56,577 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:54:03,882 INFO] Step 5800/10000; acc:  51.98; ppl:  6.55; xent: 1.88; lr: 0.10000; 35572/1300 tok/s;   1009 sec
+[2020-12-07 14:54:11,882 INFO] Step 5850/10000; acc:  50.27; ppl:  7.16; xent: 1.97; lr: 0.10000; 41356/1466 tok/s;   1017 sec
+[2020-12-07 14:54:18,548 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:54:18,566 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:54:21,493 INFO] Step 5900/10000; acc:  50.44; ppl:  7.06; xent: 1.95; lr: 0.10000; 37523/1237 tok/s;   1026 sec
+[2020-12-07 14:54:29,889 INFO] Step 5950/10000; acc:  49.39; ppl:  7.41; xent: 2.00; lr: 0.10000; 41320/1382 tok/s;   1035 sec
+[2020-12-07 14:54:38,222 INFO] Step 6000/10000; acc:  50.32; ppl:  7.09; xent: 1.96; lr: 0.10000; 41899/1350 tok/s;   1043 sec
+[2020-12-07 14:54:41,114 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:54:47,273 INFO] Step 6050/10000; acc:  50.28; ppl:  7.29; xent: 1.99; lr: 0.10000; 36390/1259 tok/s;   1052 sec
+[2020-12-07 14:54:56,063 INFO] Step 6100/10000; acc:  51.94; ppl:  6.95; xent: 1.94; lr: 0.10000; 42832/1246 tok/s;   1061 sec
+[2020-12-07 14:55:05,866 INFO] Step 6150/10000; acc:  51.16; ppl:  7.00; xent: 1.95; lr: 0.10000; 38187/1119 tok/s;   1071 sec
+[2020-12-07 14:55:14,292 INFO] Step 6200/10000; acc:  52.14; ppl:  6.94; xent: 1.94; lr: 0.10000; 42005/1314 tok/s;   1079 sec
+[2020-12-07 14:55:22,632 INFO] Step 6250/10000; acc:  52.52; ppl:  6.62; xent: 1.89; lr: 0.10000; 42054/1325 tok/s;   1087 sec
+[2020-12-07 14:55:26,896 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:55:26,899 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:55:26,934 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:55:32,097 INFO] Step 6300/10000; acc:  52.15; ppl:  6.81; xent: 1.92; lr: 0.10000; 37600/1161 tok/s;   1097 sec
+[2020-12-07 14:55:40,974 INFO] Step 6350/10000; acc:  52.13; ppl:  6.72; xent: 1.91; lr: 0.10000; 42583/1255 tok/s;   1106 sec
+[2020-12-07 14:55:50,077 INFO] Step 6400/10000; acc:  52.28; ppl:  6.83; xent: 1.92; lr: 0.10000; 41581/1246 tok/s;   1115 sec
+[2020-12-07 14:55:50,088 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:55:50,113 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:55:50,133 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:55:50,138 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:55:50,141 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:55:50,144 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:55:50,151 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:55:59,586 INFO] Step 6450/10000; acc:  51.65; ppl:  6.76; xent: 1.91; lr: 0.10000; 37575/1210 tok/s;   1124 sec
+[2020-12-07 14:56:07,942 INFO] Step 6500/10000; acc:  51.50; ppl:  6.86; xent: 1.93; lr: 0.10000; 41957/1421 tok/s;   1133 sec
+[2020-12-07 14:56:17,183 INFO] Step 6550/10000; acc:  52.09; ppl:  6.54; xent: 1.88; lr: 0.10000; 37475/1241 tok/s;   1142 sec
+[2020-12-07 14:56:25,066 INFO] Step 6600/10000; acc:  51.90; ppl:  6.39; xent: 1.85; lr: 0.10000; 40288/1538 tok/s;   1150 sec
+[2020-12-07 14:56:33,115 INFO] Step 6650/10000; acc:  53.41; ppl:  6.07; xent: 1.80; lr: 0.10000; 41164/1532 tok/s;   1158 sec
+[2020-12-07 14:56:41,752 INFO] Step 6700/10000; acc:  53.06; ppl:  6.13; xent: 1.81; lr: 0.10000; 35351/1409 tok/s;   1167 sec
+[2020-12-07 14:56:49,183 INFO] Step 6750/10000; acc:  54.22; ppl:  5.97; xent: 1.79; lr: 0.10000; 40418/1658 tok/s;   1174 sec
+[2020-12-07 14:56:54,649 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:56:54,669 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:56:54,686 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:56:54,689 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:56:54,703 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:56:58,153 INFO] Step 6800/10000; acc:  52.54; ppl:  6.29; xent: 1.84; lr: 0.10000; 36676/1337 tok/s;   1183 sec
+[2020-12-07 14:57:06,331 INFO] Step 6850/10000; acc:  50.82; ppl:  6.95; xent: 1.94; lr: 0.10000; 41006/1413 tok/s;   1191 sec
+[2020-12-07 14:57:15,043 INFO] Step 6900/10000; acc:  50.82; ppl:  7.16; xent: 1.97; lr: 0.10000; 42008/1363 tok/s;   1200 sec
+[2020-12-07 14:57:16,850 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:57:23,921 INFO] Step 6950/10000; acc:  51.09; ppl:  6.90; xent: 1.93; lr: 0.10000; 35881/1297 tok/s;   1209 sec
+[2020-12-07 14:57:32,306 INFO] Step 7000/10000; acc:  50.34; ppl:  7.07; xent: 1.96; lr: 0.10000; 42068/1361 tok/s;   1217 sec
+[2020-12-07 14:57:39,207 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 14:57:41,852 INFO] Step 7050/10000; acc:  51.02; ppl:  6.96; xent: 1.94; lr: 0.10000; 37888/1219 tok/s;   1227 sec
+[2020-12-07 14:57:50,459 INFO] Step 7100/10000; acc:  52.40; ppl:  6.91; xent: 1.93; lr: 0.10000; 42103/1252 tok/s;   1235 sec
+[2020-12-07 14:57:58,605 INFO] Step 7150/10000; acc:  52.86; ppl:  6.43; xent: 1.86; lr: 0.10000; 42026/1351 tok/s;   1243 sec
+[2020-12-07 14:58:07,937 INFO] Step 7200/10000; acc:  53.18; ppl:  6.48; xent: 1.87; lr: 0.10000; 36991/1161 tok/s;   1253 sec
+[2020-12-07 14:58:16,488 INFO] Step 7250/10000; acc:  52.45; ppl:  6.69; xent: 1.90; lr: 0.10000; 43021/1307 tok/s;   1261 sec
+[2020-12-07 14:58:25,134 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 14:58:25,138 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 14:58:25,154 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 14:58:25,169 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 14:58:26,661 INFO] Step 7300/10000; acc:  53.45; ppl:  6.43; xent: 1.86; lr: 0.10000; 38830/1099 tok/s;   1271 sec
+[2020-12-07 14:58:35,264 INFO] Step 7350/10000; acc:  53.03; ppl:  6.56; xent: 1.88; lr: 0.10000; 42062/1278 tok/s;   1280 sec
+[2020-12-07 14:58:43,688 INFO] Step 7400/10000; acc:  53.17; ppl:  6.40; xent: 1.86; lr: 0.10000; 42493/1334 tok/s;   1289 sec
+[2020-12-07 14:58:48,038 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 14:58:48,048 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 14:58:48,053 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 14:58:48,055 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 14:58:48,059 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 14:58:48,065 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 14:58:52,913 INFO] Step 7450/10000; acc:  52.42; ppl:  6.68; xent: 1.90; lr: 0.10000; 36767/1262 tok/s;   1298 sec
+[2020-12-07 14:59:01,535 INFO] Step 7500/10000; acc:  52.14; ppl:  6.58; xent: 1.88; lr: 0.10000; 42644/1364 tok/s;   1306 sec
+[2020-12-07 14:59:10,621 INFO] Step 7550/10000; acc:  53.00; ppl:  6.56; xent: 1.88; lr: 0.10000; 42877/1278 tok/s;   1315 sec
+[2020-12-07 14:59:19,102 INFO] Step 7600/10000; acc:  52.94; ppl:  6.08; xent: 1.80; lr: 0.10000; 35833/1439 tok/s;   1324 sec
+[2020-12-07 14:59:26,507 INFO] Step 7650/10000; acc:  53.86; ppl:  5.96; xent: 1.79; lr: 0.10000; 40853/1645 tok/s;   1331 sec
+[2020-12-07 14:59:35,106 INFO] Step 7700/10000; acc:  53.14; ppl:  5.89; xent: 1.77; lr: 0.10000; 36583/1426 tok/s;   1340 sec
+[2020-12-07 14:59:42,560 INFO] Step 7750/10000; acc:  54.56; ppl:  5.88; xent: 1.77; lr: 0.10000; 40015/1615 tok/s;   1347 sec
+[2020-12-07 14:59:50,351 INFO] Step 7800/10000; acc:  54.37; ppl:  5.85; xent: 1.77; lr: 0.10000; 41496/1575 tok/s;   1355 sec
+[2020-12-07 14:59:51,620 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 14:59:51,642 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 14:59:51,645 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 14:59:51,648 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 14:59:51,661 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 14:59:51,698 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 14:59:59,795 INFO] Step 7850/10000; acc:  51.14; ppl:  6.82; xent: 1.92; lr: 0.10000; 36831/1235 tok/s;   1365 sec
+[2020-12-07 15:00:07,629 INFO] Step 7900/10000; acc:  51.51; ppl:  6.85; xent: 1.92; lr: 0.10000; 41840/1492 tok/s;   1372 sec
+[2020-12-07 15:00:14,111 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 15:00:17,357 INFO] Step 7950/10000; acc:  51.43; ppl:  6.98; xent: 1.94; lr: 0.10000; 38183/1190 tok/s;   1382 sec
+[2020-12-07 15:00:25,350 INFO] Step 8000/10000; acc:  51.33; ppl:  6.73; xent: 1.91; lr: 0.10000; 41166/1425 tok/s;   1390 sec
+[2020-12-07 15:00:33,839 INFO] Step 8050/10000; acc:  52.01; ppl:  6.56; xent: 1.88; lr: 0.10000; 42224/1351 tok/s;   1399 sec
+[2020-12-07 15:00:42,962 INFO] Step 8100/10000; acc:  52.67; ppl:  6.64; xent: 1.89; lr: 0.10000; 36738/1192 tok/s;   1408 sec
+[2020-12-07 15:00:51,764 INFO] Step 8150/10000; acc:  52.98; ppl:  6.58; xent: 1.88; lr: 0.10000; 42943/1267 tok/s;   1417 sec
+[2020-12-07 15:01:01,519 INFO] Step 8200/10000; acc:  53.61; ppl:  6.39; xent: 1.85; lr: 0.10000; 38430/1107 tok/s;   1426 sec
+[2020-12-07 15:01:10,300 INFO] Step 8250/10000; acc:  53.68; ppl:  6.41; xent: 1.86; lr: 0.10000; 42258/1264 tok/s;   1435 sec
+[2020-12-07 15:01:18,702 INFO] Step 8300/10000; acc:  54.07; ppl:  6.16; xent: 1.82; lr: 0.10000; 41704/1312 tok/s;   1444 sec
+[2020-12-07 15:01:22,462 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 15:01:22,467 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 15:01:22,483 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 15:01:22,498 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 15:01:28,195 INFO] Step 8350/10000; acc:  53.38; ppl:  6.46; xent: 1.87; lr: 0.10000; 37280/1171 tok/s;   1453 sec
+[2020-12-07 15:01:36,640 INFO] Step 8400/10000; acc:  54.50; ppl:  6.16; xent: 1.82; lr: 0.10000; 42690/1300 tok/s;   1461 sec
+[2020-12-07 15:01:45,466 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 15:01:45,476 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 15:01:45,481 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 15:01:45,484 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 15:01:45,488 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 15:01:45,495 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 15:01:46,616 INFO] Step 8450/10000; acc:  53.20; ppl:  6.53; xent: 1.88; lr: 0.10000; 38198/1178 tok/s;   1471 sec
+[2020-12-07 15:01:55,088 INFO] Step 8500/10000; acc:  52.74; ppl:  6.41; xent: 1.86; lr: 0.10000; 41567/1374 tok/s;   1480 sec
+[2020-12-07 15:02:03,100 INFO] Step 8550/10000; acc:  53.84; ppl:  6.06; xent: 1.80; lr: 0.10000; 41574/1457 tok/s;   1488 sec
+[2020-12-07 15:02:12,090 INFO] Step 8600/10000; acc:  53.25; ppl:  5.95; xent: 1.78; lr: 0.10000; 36926/1337 tok/s;   1497 sec
+[2020-12-07 15:02:20,080 INFO] Step 8650/10000; acc:  53.16; ppl:  5.98; xent: 1.79; lr: 0.10000; 40260/1551 tok/s;   1505 sec
+[2020-12-07 15:02:28,353 INFO] Step 8700/10000; acc:  53.68; ppl:  6.11; xent: 1.81; lr: 0.10000; 41607/1476 tok/s;   1513 sec
+[2020-12-07 15:02:36,839 INFO] Step 8750/10000; acc:  54.76; ppl:  5.75; xent: 1.75; lr: 0.10000; 35383/1417 tok/s;   1522 sec
+[2020-12-07 15:02:43,990 INFO] Step 8800/10000; acc:  55.42; ppl:  5.61; xent: 1.72; lr: 0.10000; 40432/1723 tok/s;   1529 sec
+[2020-12-07 15:02:49,060 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 15:02:49,080 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 15:02:49,084 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 15:02:49,086 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 15:02:49,103 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 15:02:49,135 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 15:02:52,932 INFO] Step 8850/10000; acc:  53.20; ppl:  6.12; xent: 1.81; lr: 0.10000; 36317/1356 tok/s;   1538 sec
+[2020-12-07 15:03:01,390 INFO] Step 8900/10000; acc:  51.44; ppl:  6.88; xent: 1.93; lr: 0.10000; 41410/1375 tok/s;   1546 sec
+[2020-12-07 15:03:10,448 INFO] Step 8950/10000; acc:  50.61; ppl:  7.10; xent: 1.96; lr: 0.10000; 42909/1277 tok/s;   1555 sec
+[2020-12-07 15:03:12,116 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 15:03:19,370 INFO] Step 9000/10000; acc:  52.53; ppl:  6.40; xent: 1.86; lr: 0.10000; 36378/1244 tok/s;   1564 sec
+[2020-12-07 15:03:27,493 INFO] Step 9050/10000; acc:  52.56; ppl:  6.45; xent: 1.86; lr: 0.10000; 42271/1379 tok/s;   1572 sec
+[2020-12-07 15:03:37,217 INFO] Step 9100/10000; acc:  52.19; ppl:  6.68; xent: 1.90; lr: 0.10000; 37944/1165 tok/s;   1582 sec
+[2020-12-07 15:03:45,764 INFO] Step 9150/10000; acc:  54.40; ppl:  6.22; xent: 1.83; lr: 0.10000; 41913/1267 tok/s;   1591 sec
+[2020-12-07 15:03:54,241 INFO] Step 9200/10000; acc:  53.72; ppl:  6.19; xent: 1.82; lr: 0.10000; 42240/1323 tok/s;   1599 sec
+[2020-12-07 15:04:03,466 INFO] Step 9250/10000; acc:  54.87; ppl:  6.07; xent: 1.80; lr: 0.10000; 36771/1161 tok/s;   1608 sec
+[2020-12-07 15:04:12,433 INFO] Step 9300/10000; acc:  53.38; ppl:  6.34; xent: 1.85; lr: 0.10000; 43128/1255 tok/s;   1617 sec
+[2020-12-07 15:04:20,441 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-07 15:04:20,446 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-07 15:04:20,473 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-07 15:04:20,489 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-07 15:04:20,516 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-07 15:04:22,467 INFO] Step 9350/10000; acc:  54.90; ppl:  6.00; xent: 1.79; lr: 0.10000; 38139/1101 tok/s;   1627 sec
+[2020-12-07 15:04:30,948 INFO] Step 9400/10000; acc:  53.81; ppl:  6.36; xent: 1.85; lr: 0.10000; 41790/1300 tok/s;   1636 sec
+[2020-12-07 15:04:39,321 INFO] Step 9450/10000; acc:  54.32; ppl:  6.05; xent: 1.80; lr: 0.10000; 42001/1379 tok/s;   1644 sec
+[2020-12-07 15:04:43,592 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-07 15:04:43,598 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-07 15:04:43,600 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-07 15:04:43,604 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-07 15:04:43,611 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-07 15:04:48,757 INFO] Step 9500/10000; acc:  54.12; ppl:  6.17; xent: 1.82; lr: 0.10000; 36721/1235 tok/s;   1654 sec
+[2020-12-07 15:04:57,076 INFO] Step 9550/10000; acc:  53.87; ppl:  6.09; xent: 1.81; lr: 0.10000; 41968/1399 tok/s;   1662 sec
+[2020-12-07 15:05:05,669 INFO] Step 9600/10000; acc:  53.42; ppl:  6.14; xent: 1.81; lr: 0.10000; 41750/1408 tok/s;   1671 sec
+[2020-12-07 15:05:14,293 INFO] Step 9650/10000; acc:  54.50; ppl:  5.61; xent: 1.73; lr: 0.10000; 35948/1391 tok/s;   1679 sec
+[2020-12-07 15:05:21,713 INFO] Step 9700/10000; acc:  54.62; ppl:  5.78; xent: 1.76; lr: 0.10000; 40470/1695 tok/s;   1687 sec
+[2020-12-07 15:05:30,578 INFO] Step 9750/10000; acc:  54.41; ppl:  5.68; xent: 1.74; lr: 0.10000; 36630/1373 tok/s;   1695 sec
+[2020-12-07 15:05:38,434 INFO] Step 9800/10000; acc:  55.00; ppl:  5.83; xent: 1.76; lr: 0.10000; 40034/1539 tok/s;   1703 sec
+[2020-12-07 15:05:46,390 INFO] Step 9850/10000; acc:  54.75; ppl:  5.81; xent: 1.76; lr: 0.10000; 41222/1536 tok/s;   1711 sec
+[2020-12-07 15:05:47,235 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-07 15:05:47,258 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-07 15:05:47,262 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-07 15:05:47,266 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-07 15:05:47,290 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-07 15:05:47,307 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-07 15:05:55,807 INFO] Step 9900/10000; acc:  52.33; ppl:  6.63; xent: 1.89; lr: 0.10000; 36478/1228 tok/s;   1721 sec
+[2020-12-07 15:06:04,250 INFO] Step 9950/10000; acc:  51.85; ppl:  6.81; xent: 1.92; lr: 0.10000; 42284/1364 tok/s;   1729 sec
+[2020-12-07 15:06:10,333 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-07 15:06:13,848 INFO] Step 10000/10000; acc:  52.35; ppl:  6.54; xent: 1.88; lr: 0.10000; 37416/1183 tok/s;   1739 sec
+[2020-12-07 15:06:13,849 INFO] valid's transforms: TransformPipe()
+[2020-12-07 15:06:13,849 INFO] Loading ParallelCorpus(data/dataset1_val_src_trunc.txt, data/dataset1_val_tgt.txt, align=None)...
+[2020-12-07 15:06:13,932 WARNING] Empty line exists in valid#1826.
+[2020-12-07 15:06:32,238 WARNING] Empty line exists in valid#3819.
+[2020-12-07 15:06:32,259 WARNING] Empty line exists in valid#3879.
+[2020-12-07 15:06:50,556 INFO] Validation perplexity: 6.9288
+[2020-12-07 15:06:50,557 INFO] Validation accuracy: 52.6336
+[2020-12-07 15:06:51,591 INFO] Saving checkpoint /home/ubuntu/transformer-model_step_10000.pt

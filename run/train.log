@@ -1,0 +1,1154 @@
+[2020-12-04 20:53:02,712 INFO] Missing transforms field for corpus_1 data, set to default: [].
+[2020-12-04 20:53:02,713 WARNING] Corpus corpus_1's weight should be given. We default it to 1 for you.
+[2020-12-04 20:53:02,713 INFO] Missing transforms field for valid data, set to default: [].
+[2020-12-04 20:53:02,713 INFO] Parsed 2 corpora from -data.
+[2020-12-04 20:53:02,713 INFO] Get special vocabs from Transforms: {'src': set(), 'tgt': set()}.
+[2020-12-04 20:53:02,713 INFO] Loading vocab from text file...
+[2020-12-04 20:53:02,713 INFO] Loading src vocabulary from example.vocab.src
+[2020-12-04 20:53:03,145 INFO] Loaded src vocab has 140793 tokens.
+[2020-12-04 20:53:03,239 INFO] Loading tgt vocabulary from example.vocab.tgt
+[2020-12-04 20:53:03,316 INFO] Loaded tgt vocab has 14320 tokens.
+[2020-12-04 20:53:03,323 INFO] Building fields with vocab in counters...
+[2020-12-04 20:53:03,343 INFO]  * tgt vocab size: 14324.
+[2020-12-04 20:53:03,600 INFO]  * src vocab size: 50002.
+[2020-12-04 20:53:03,607 INFO]  * src vocab size = 50002
+[2020-12-04 20:53:03,607 INFO]  * tgt vocab size = 14324
+[2020-12-04 20:53:03,608 INFO] Building model...
+[2020-12-04 20:53:07,766 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(50002, 256, padding_idx=1)
+        )
+      )
+    )
+    (rnn): LSTM(256, 128, num_layers=2, dropout=0.3, bidirectional=True)
+    (bridge): ModuleList(
+      (0): Linear(in_features=256, out_features=256, bias=True)
+      (1): Linear(in_features=256, out_features=256, bias=True)
+    )
+  )
+  (decoder): InputFeedRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(14324, 256, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+    (rnn): StackedLSTM(
+      (dropout): Dropout(p=0.3, inplace=False)
+      (layers): ModuleList(
+        (0): LSTMCell(512, 256)
+        (1): LSTMCell(256, 256)
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=256, out_features=256, bias=False)
+      (linear_out): Linear(in_features=512, out_features=256, bias=False)
+    )
+  )
+  (generator): CopyGenerator(
+    (linear): Linear(in_features=256, out_features=14324, bias=True)
+    (linear_copy): Linear(in_features=256, out_features=1, bias=True)
+  )
+)
+[2020-12-04 20:53:07,767 INFO] encoder: 13722624
+[2020-12-04 20:53:07,767 INFO] decoder: 8859893
+[2020-12-04 20:53:07,767 INFO] * number of parameters: 22582517
+[2020-12-04 20:53:07,768 INFO] Starting training on GPU: [0]
+[2020-12-04 20:53:07,768 INFO] Start training loop and validate every 10000 steps...
+[2020-12-04 20:53:07,769 INFO] corpus_1's transforms: TransformPipe()
+[2020-12-04 20:53:07,770 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+/home/ubuntu/.local/lib/python3.6/site-packages/torchtext/data/field.py:359: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  var = torch.tensor(arr, dtype=self.dtype, device=device)
+[2020-12-04 20:53:29,089 INFO] Step 50/20000; acc:  10.88; ppl: 586.20; xent: 6.37; lr: 1.00000; 33571/1022 tok/s;     21 sec
+[2020-12-04 20:53:50,864 INFO] Step 100/20000; acc:  15.06; ppl: 160.61; xent: 5.08; lr: 1.00000; 32617/1013 tok/s;     43 sec
+[2020-12-04 20:54:03,366 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 20:54:03,369 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 20:54:03,384 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 20:54:03,398 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 20:54:13,438 INFO] Step 150/20000; acc:  22.19; ppl: 45.95; xent: 3.83; lr: 1.00000; 33089/989 tok/s;     66 sec
+[2020-12-04 20:54:32,369 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 20:54:32,380 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 20:54:32,385 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 20:54:32,388 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 20:54:32,391 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 20:54:32,398 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 20:54:37,825 INFO] Step 200/20000; acc:  34.97; ppl: 18.05; xent: 2.89; lr: 1.00000; 31341/938 tok/s;     90 sec
+[2020-12-04 20:54:57,794 INFO] Step 250/20000; acc:  52.51; ppl: 10.49; xent: 2.35; lr: 1.00000; 31714/1167 tok/s;    110 sec
+[2020-12-04 20:55:19,525 INFO] Step 300/20000; acc:  59.13; ppl:  8.99; xent: 2.20; lr: 1.00000; 30758/1120 tok/s;    132 sec
+[2020-12-04 20:55:40,347 INFO] Step 350/20000; acc:  62.97; ppl:  6.48; xent: 1.87; lr: 1.00000; 29765/1177 tok/s;    153 sec
+[2020-12-04 20:55:53,758 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 20:55:53,781 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 20:55:53,785 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 20:55:53,787 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 20:55:53,803 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 20:55:53,821 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 20:56:01,511 INFO] Step 400/20000; acc:  63.44; ppl:  5.82; xent: 1.76; lr: 1.00000; 30726/1125 tok/s;    174 sec
+[2020-12-04 20:56:22,777 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 20:56:25,182 INFO] Step 450/20000; acc:  65.66; ppl:  5.06; xent: 1.62; lr: 1.00000; 31803/988 tok/s;    197 sec
+[2020-12-04 20:56:44,877 INFO] Step 500/20000; acc:  66.97; ppl:  4.88; xent: 1.58; lr: 1.00000; 32189/1138 tok/s;    217 sec
+[2020-12-04 20:57:07,427 INFO] Step 550/20000; acc:  69.24; ppl:  5.33; xent: 1.67; lr: 1.00000; 31931/970 tok/s;    240 sec
+[2020-12-04 20:57:31,243 INFO] Step 600/20000; acc:  69.53; ppl:  5.46; xent: 1.70; lr: 1.00000; 31380/923 tok/s;    263 sec
+[2020-12-04 20:57:49,270 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 20:57:49,274 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 20:57:49,292 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 20:57:49,310 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 20:57:49,340 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 20:57:55,080 INFO] Step 650/20000; acc:  70.79; ppl:  4.88; xent: 1.59; lr: 1.00000; 31669/944 tok/s;    287 sec
+[2020-12-04 20:58:15,882 INFO] Step 700/20000; acc:  72.92; ppl:  4.38; xent: 1.48; lr: 1.00000; 32696/1092 tok/s;    308 sec
+[2020-12-04 20:58:18,389 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 20:58:18,394 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 20:58:18,396 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 20:58:18,400 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 20:58:18,408 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 20:58:38,807 INFO] Step 750/20000; acc:  75.30; ppl:  3.98; xent: 1.38; lr: 1.00000; 31457/1034 tok/s;    331 sec
+[2020-12-04 20:58:59,669 INFO] Step 800/20000; acc:  75.06; ppl:  3.96; xent: 1.38; lr: 1.00000; 29887/1146 tok/s;    352 sec
+[2020-12-04 20:59:21,996 INFO] Step 850/20000; acc:  75.17; ppl:  3.72; xent: 1.31; lr: 1.00000; 29846/1109 tok/s;    374 sec
+[2020-12-04 20:59:40,121 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 20:59:40,147 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 20:59:40,150 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 20:59:40,154 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 20:59:40,171 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 20:59:40,191 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 20:59:43,538 INFO] Step 900/20000; acc:  76.00; ppl:  3.17; xent: 1.15; lr: 1.00000; 30123/1118 tok/s;    396 sec
+[2020-12-04 21:00:05,945 INFO] Step 950/20000; acc:  74.17; ppl:  3.43; xent: 1.23; lr: 1.00000; 29739/1021 tok/s;    418 sec
+[2020-12-04 21:00:10,970 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:00:29,049 INFO] Step 1000/20000; acc:  75.17; ppl:  3.33; xent: 1.20; lr: 1.00000; 30553/979 tok/s;    441 sec
+[2020-12-04 21:00:51,993 INFO] Step 1050/20000; acc:  75.11; ppl:  3.73; xent: 1.32; lr: 1.00000; 30638/968 tok/s;    464 sec
+[2020-12-04 21:01:15,308 INFO] Step 1100/20000; acc:  75.60; ppl:  3.97; xent: 1.38; lr: 1.00000; 32570/944 tok/s;    488 sec
+[2020-12-04 21:01:36,132 INFO] Step 1150/20000; acc:  76.91; ppl:  3.76; xent: 1.32; lr: 1.00000; 33596/1050 tok/s;    508 sec
+[2020-12-04 21:01:37,387 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:01:37,391 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:01:37,413 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:01:37,557 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:01:37,588 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:01:37,599 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:02:00,059 INFO] Step 1200/20000; acc:  78.91; ppl:  3.16; xent: 1.15; lr: 1.00000; 31643/960 tok/s;    532 sec
+[2020-12-04 21:02:06,961 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:02:06,963 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:02:06,967 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:02:06,975 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:02:21,991 INFO] Step 1250/20000; acc:  79.30; ppl:  3.18; xent: 1.16; lr: 1.00000; 30600/1064 tok/s;    554 sec
+[2020-12-04 21:02:44,075 INFO] Step 1300/20000; acc:  79.43; ppl:  3.15; xent: 1.15; lr: 1.00000; 30752/1096 tok/s;    576 sec
+[2020-12-04 21:03:02,030 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:03:06,575 INFO] Step 1350/20000; acc:  79.82; ppl:  2.92; xent: 1.07; lr: 1.00000; 30015/1091 tok/s;    599 sec
+[2020-12-04 21:03:26,107 INFO] Step 1400/20000; acc:  79.83; ppl:  2.56; xent: 0.94; lr: 1.00000; 28801/1240 tok/s;    618 sec
+[2020-12-04 21:03:30,053 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:03:30,057 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:03:30,060 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:03:30,077 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:03:30,099 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:03:48,793 INFO] Step 1450/20000; acc:  78.84; ppl:  2.65; xent: 0.98; lr: 1.00000; 30918/1011 tok/s;    641 sec
+[2020-12-04 21:03:58,943 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:04:11,256 INFO] Step 1500/20000; acc:  77.61; ppl:  2.96; xent: 1.09; lr: 1.00000; 31560/1012 tok/s;    663 sec
+[2020-12-04 21:04:34,398 INFO] Step 1550/20000; acc:  77.43; ppl:  3.11; xent: 1.13; lr: 1.00000; 31360/978 tok/s;    687 sec
+[2020-12-04 21:04:55,767 INFO] Step 1600/20000; acc:  79.33; ppl:  3.19; xent: 1.16; lr: 1.00000; 33889/1016 tok/s;    708 sec
+[2020-12-04 21:05:18,351 INFO] Step 1650/20000; acc:  79.26; ppl:  3.16; xent: 1.15; lr: 1.00000; 31589/972 tok/s;    731 sec
+[2020-12-04 21:05:24,619 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:05:24,623 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:05:24,759 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:05:24,777 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:05:24,809 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:05:24,820 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:05:24,826 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:05:24,828 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:05:24,831 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:05:41,267 INFO] Step 1700/20000; acc:  81.58; ppl:  2.75; xent: 1.01; lr: 1.00000; 31231/997 tok/s;    753 sec
+[2020-12-04 21:05:54,473 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:06:04,720 INFO] Step 1750/20000; acc:  81.93; ppl:  2.73; xent: 1.00; lr: 1.00000; 31087/978 tok/s;    777 sec
+[2020-12-04 21:06:28,155 INFO] Step 1800/20000; acc:  81.48; ppl:  2.80; xent: 1.03; lr: 1.00000; 29525/1041 tok/s;    800 sec
+[2020-12-04 21:06:47,203 INFO] Step 1850/20000; acc:  82.38; ppl:  2.49; xent: 0.91; lr: 1.00000; 29223/1297 tok/s;    819 sec
+[2020-12-04 21:06:50,543 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:07:09,530 INFO] Step 1900/20000; acc:  81.45; ppl:  2.32; xent: 0.84; lr: 1.00000; 30284/1076 tok/s;    842 sec
+[2020-12-04 21:07:17,992 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:07:17,996 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:07:18,000 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:07:18,018 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:07:18,037 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:07:31,927 INFO] Step 1950/20000; acc:  80.32; ppl:  2.42; xent: 0.88; lr: 1.00000; 30512/1039 tok/s;    864 sec
+[2020-12-04 21:07:46,750 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:07:54,443 INFO] Step 2000/20000; acc:  78.95; ppl:  2.59; xent: 0.95; lr: 1.00000; 31981/1002 tok/s;    887 sec
+[2020-12-04 21:08:17,489 INFO] Step 2050/20000; acc:  79.80; ppl:  2.70; xent: 0.99; lr: 1.00000; 32133/975 tok/s;    910 sec
+[2020-12-04 21:08:38,116 INFO] Step 2100/20000; acc:  80.86; ppl:  2.83; xent: 1.04; lr: 1.00000; 32292/1053 tok/s;    930 sec
+[2020-12-04 21:08:43,930 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:09:01,177 INFO] Step 2150/20000; acc:  81.60; ppl:  2.65; xent: 0.98; lr: 1.00000; 31257/968 tok/s;    953 sec
+[2020-12-04 21:09:13,330 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:09:13,349 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:09:13,506 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:09:13,537 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:09:13,549 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:09:13,555 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:09:13,556 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:09:13,561 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:09:13,570 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:09:25,562 INFO] Step 2200/20000; acc:  82.57; ppl:  2.52; xent: 0.92; lr: 1.00000; 30884/929 tok/s;    978 sec
+[2020-12-04 21:09:50,565 INFO] Step 2250/20000; acc:  83.60; ppl:  2.41; xent: 0.88; lr: 1.00000; 30077/911 tok/s;   1003 sec
+[2020-12-04 21:10:09,810 INFO] Step 2300/20000; acc:  83.77; ppl:  2.48; xent: 0.91; lr: 1.00000; 30910/1263 tok/s;   1022 sec
+[2020-12-04 21:10:31,714 INFO] Step 2350/20000; acc:  83.69; ppl:  2.23; xent: 0.80; lr: 1.00000; 29722/1139 tok/s;   1044 sec
+[2020-12-04 21:10:38,855 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:10:38,877 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:10:38,881 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:10:52,581 INFO] Step 2400/20000; acc:  82.53; ppl:  2.24; xent: 0.81; lr: 1.00000; 29717/1145 tok/s;   1065 sec
+[2020-12-04 21:11:06,565 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:11:06,581 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:11:06,601 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:11:15,615 INFO] Step 2450/20000; acc:  81.38; ppl:  2.23; xent: 0.80; lr: 1.00000; 31131/1015 tok/s;   1088 sec
+[2020-12-04 21:11:35,522 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:11:38,796 INFO] Step 2500/20000; acc:  80.37; ppl:  2.34; xent: 0.85; lr: 1.00000; 31511/989 tok/s;   1111 sec
+[2020-12-04 21:11:59,571 INFO] Step 2550/20000; acc:  80.87; ppl:  2.53; xent: 0.93; lr: 1.00000; 31480/1061 tok/s;   1132 sec
+[2020-12-04 21:12:23,184 INFO] Step 2600/20000; acc:  81.80; ppl:  2.53; xent: 0.93; lr: 1.00000; 30780/933 tok/s;   1155 sec
+[2020-12-04 21:12:33,755 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:12:33,759 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:12:45,689 INFO] Step 2650/20000; acc:  82.83; ppl:  2.42; xent: 0.88; lr: 1.00000; 31844/987 tok/s;   1178 sec
+[2020-12-04 21:13:02,849 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:13:02,868 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:13:02,899 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:13:02,910 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:13:02,916 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:13:02,918 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:13:02,922 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:13:02,930 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:13:09,533 INFO] Step 2700/20000; acc:  82.96; ppl:  2.40; xent: 0.87; lr: 1.00000; 32135/939 tok/s;   1202 sec
+[2020-12-04 21:13:31,087 INFO] Step 2750/20000; acc:  84.22; ppl:  2.20; xent: 0.79; lr: 1.00000; 33158/1060 tok/s;   1223 sec
+[2020-12-04 21:13:52,778 INFO] Step 2800/20000; acc:  84.81; ppl:  2.22; xent: 0.80; lr: 1.00000; 30282/1125 tok/s;   1245 sec
+[2020-12-04 21:14:13,639 INFO] Step 2850/20000; acc:  84.80; ppl:  2.11; xent: 0.75; lr: 1.00000; 29053/1176 tok/s;   1266 sec
+[2020-12-04 21:14:25,906 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:14:25,957 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:14:25,961 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:14:25,964 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:14:35,400 INFO] Step 2900/20000; acc:  83.51; ppl:  2.10; xent: 0.74; lr: 1.00000; 30465/1097 tok/s;   1288 sec
+[2020-12-04 21:14:54,370 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:14:54,393 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:14:59,348 INFO] Step 2950/20000; acc:  82.18; ppl:  2.14; xent: 0.76; lr: 1.00000; 30259/993 tok/s;   1312 sec
+[2020-12-04 21:15:19,835 INFO] Step 3000/20000; acc:  80.57; ppl:  2.28; xent: 0.83; lr: 1.00000; 30350/1117 tok/s;   1332 sec
+[2020-12-04 21:15:23,788 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:15:42,308 INFO] Step 3050/20000; acc:  82.49; ppl:  2.30; xent: 0.83; lr: 1.00000; 31736/983 tok/s;   1355 sec
+[2020-12-04 21:16:04,947 INFO] Step 3100/20000; acc:  82.17; ppl:  2.41; xent: 0.88; lr: 1.00000; 31947/965 tok/s;   1377 sec
+[2020-12-04 21:16:21,184 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:16:21,189 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:16:21,206 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:16:28,443 INFO] Step 3150/20000; acc:  83.35; ppl:  2.28; xent: 0.83; lr: 1.00000; 31964/958 tok/s;   1401 sec
+[2020-12-04 21:16:50,584 INFO] Step 3200/20000; acc:  84.35; ppl:  2.18; xent: 0.78; lr: 1.00000; 32987/1006 tok/s;   1423 sec
+[2020-12-04 21:16:50,597 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:16:50,631 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:16:50,643 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:16:50,649 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:16:50,650 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:16:50,654 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:16:50,662 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:17:13,415 INFO] Step 3250/20000; acc:  85.12; ppl:  2.06; xent: 0.72; lr: 1.00000; 31348/1009 tok/s;   1446 sec
+[2020-12-04 21:17:34,634 INFO] Step 3300/20000; acc:  85.96; ppl:  2.04; xent: 0.71; lr: 1.00000; 30216/1122 tok/s;   1467 sec
+[2020-12-04 21:17:57,230 INFO] Step 3350/20000; acc:  85.78; ppl:  2.00; xent: 0.69; lr: 1.00000; 28695/1093 tok/s;   1489 sec
+[2020-12-04 21:18:14,366 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:18:14,400 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:18:14,404 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:18:14,407 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:18:14,422 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:18:19,549 INFO] Step 3400/20000; acc:  84.56; ppl:  1.96; xent: 0.67; lr: 1.00000; 30060/1084 tok/s;   1512 sec
+[2020-12-04 21:18:39,338 INFO] Step 3450/20000; acc:  82.43; ppl:  2.08; xent: 0.73; lr: 1.00000; 31034/1189 tok/s;   1532 sec
+[2020-12-04 21:18:42,601 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:19:02,292 INFO] Step 3500/20000; acc:  81.68; ppl:  2.11; xent: 0.75; lr: 1.00000; 31312/1000 tok/s;   1555 sec
+[2020-12-04 21:19:11,133 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:19:24,625 INFO] Step 3550/20000; acc:  82.40; ppl:  2.19; xent: 0.78; lr: 1.00000; 31557/1005 tok/s;   1577 sec
+[2020-12-04 21:19:47,626 INFO] Step 3600/20000; acc:  82.99; ppl:  2.28; xent: 0.82; lr: 1.00000; 31994/948 tok/s;   1600 sec
+[2020-12-04 21:20:09,027 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:20:09,031 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:20:09,049 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:20:09,066 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:20:11,523 INFO] Step 3650/20000; acc:  84.08; ppl:  2.16; xent: 0.77; lr: 1.00000; 32034/934 tok/s;   1624 sec
+[2020-12-04 21:20:32,476 INFO] Step 3700/20000; acc:  85.15; ppl:  1.97; xent: 0.68; lr: 1.00000; 31799/1076 tok/s;   1645 sec
+[2020-12-04 21:20:38,529 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:20:38,542 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:20:38,547 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:20:38,549 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:20:38,554 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:20:38,561 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:20:56,049 INFO] Step 3750/20000; acc:  85.79; ppl:  1.97; xent: 0.68; lr: 1.00000; 30590/976 tok/s;   1668 sec
+[2020-12-04 21:21:18,878 INFO] Step 3800/20000; acc:  85.85; ppl:  1.97; xent: 0.68; lr: 1.00000; 30901/1038 tok/s;   1691 sec
+[2020-12-04 21:21:39,985 INFO] Step 3850/20000; acc:  86.34; ppl:  1.94; xent: 0.66; lr: 1.00000; 30659/1147 tok/s;   1712 sec
+[2020-12-04 21:21:58,604 INFO] Step 3900/20000; acc:  86.00; ppl:  1.80; xent: 0.59; lr: 1.00000; 30301/1322 tok/s;   1731 sec
+[2020-12-04 21:22:00,718 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:22:00,741 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:22:00,745 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:22:00,748 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:22:00,763 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:22:00,807 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:22:21,722 INFO] Step 3950/20000; acc:  82.32; ppl:  2.06; xent: 0.72; lr: 1.00000; 31185/1025 tok/s;   1754 sec
+[2020-12-04 21:22:29,305 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:22:43,122 INFO] Step 4000/20000; acc:  82.40; ppl:  2.05; xent: 0.72; lr: 1.00000; 30920/1062 tok/s;   1775 sec
+[2020-12-04 21:23:06,226 INFO] Step 4050/20000; acc:  82.92; ppl:  2.07; xent: 0.73; lr: 1.00000; 31979/988 tok/s;   1798 sec
+[2020-12-04 21:23:28,922 INFO] Step 4100/20000; acc:  84.06; ppl:  2.13; xent: 0.76; lr: 1.00000; 33106/956 tok/s;   1821 sec
+[2020-12-04 21:23:50,418 INFO] Step 4150/20000; acc:  84.73; ppl:  2.03; xent: 0.71; lr: 1.00000; 31666/1017 tok/s;   1843 sec
+[2020-12-04 21:23:55,452 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:23:55,456 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:23:55,473 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:23:55,490 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:24:13,586 INFO] Step 4200/20000; acc:  85.63; ppl:  1.91; xent: 0.65; lr: 1.00000; 31500/979 tok/s;   1866 sec
+[2020-12-04 21:24:24,448 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:24:24,459 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:24:24,465 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:24:24,466 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:24:24,470 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:24:24,478 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:24:36,134 INFO] Step 4250/20000; acc:  85.78; ppl:  1.90; xent: 0.64; lr: 1.00000; 31517/1022 tok/s;   1888 sec
+[2020-12-04 21:24:58,700 INFO] Step 4300/20000; acc:  86.63; ppl:  1.86; xent: 0.62; lr: 1.00000; 31956/1039 tok/s;   1911 sec
+[2020-12-04 21:25:18,577 INFO] Step 4350/20000; acc:  86.49; ppl:  1.88; xent: 0.63; lr: 1.00000; 30676/1237 tok/s;   1931 sec
+[2020-12-04 21:25:39,571 INFO] Step 4400/20000; acc:  86.16; ppl:  1.76; xent: 0.57; lr: 1.00000; 29925/1173 tok/s;   1952 sec
+[2020-12-04 21:25:45,801 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:25:45,824 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:25:45,828 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:25:45,831 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:25:45,846 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:25:45,864 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:26:01,515 INFO] Step 4450/20000; acc:  83.37; ppl:  1.97; xent: 0.68; lr: 1.00000; 30197/1073 tok/s;   1974 sec
+[2020-12-04 21:26:15,026 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:26:24,620 INFO] Step 4500/20000; acc:  82.64; ppl:  2.04; xent: 0.71; lr: 1.00000; 31652/977 tok/s;   1997 sec
+[2020-12-04 21:26:48,877 INFO] Step 4550/20000; acc:  82.68; ppl:  2.03; xent: 0.71; lr: 1.00000; 30684/941 tok/s;   2021 sec
+[2020-12-04 21:27:08,168 INFO] Step 4600/20000; acc:  84.99; ppl:  1.98; xent: 0.68; lr: 1.00000; 33238/1117 tok/s;   2040 sec
+[2020-12-04 21:27:31,176 INFO] Step 4650/20000; acc:  85.14; ppl:  1.95; xent: 0.67; lr: 1.00000; 31865/966 tok/s;   2063 sec
+[2020-12-04 21:27:41,270 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:27:41,274 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:27:41,291 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:27:41,308 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:27:41,364 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:27:54,049 INFO] Step 4700/20000; acc:  86.01; ppl:  1.84; xent: 0.61; lr: 1.00000; 32023/990 tok/s;   2086 sec
+[2020-12-04 21:28:10,193 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:28:10,199 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:28:10,201 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:28:10,206 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:28:10,213 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:28:17,262 INFO] Step 4750/20000; acc:  86.98; ppl:  1.78; xent: 0.58; lr: 1.00000; 31912/984 tok/s;   2109 sec
+[2020-12-04 21:28:38,193 INFO] Step 4800/20000; acc:  86.99; ppl:  1.82; xent: 0.60; lr: 1.00000; 32656/1127 tok/s;   2130 sec
+[2020-12-04 21:28:59,262 INFO] Step 4850/20000; acc:  87.12; ppl:  1.78; xent: 0.58; lr: 1.00000; 29592/1170 tok/s;   2151 sec
+[2020-12-04 21:29:20,120 INFO] Step 4900/20000; acc:  86.34; ppl:  1.77; xent: 0.57; lr: 1.00000; 29237/1168 tok/s;   2172 sec
+[2020-12-04 21:29:32,263 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:29:32,290 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:29:32,293 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:29:32,297 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:29:32,312 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:29:32,333 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:29:43,051 INFO] Step 4950/20000; acc:  84.78; ppl:  1.83; xent: 0.61; lr: 1.00000; 29701/1032 tok/s;   2195 sec
+[2020-12-04 21:30:01,537 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:30:06,570 INFO] Step 5000/20000; acc:  82.90; ppl:  2.00; xent: 0.69; lr: 1.00000; 32401/973 tok/s;   2219 sec
+[2020-12-04 21:30:25,961 INFO] Step 5050/20000; acc:  83.23; ppl:  1.95; xent: 0.67; lr: 1.00000; 32148/1163 tok/s;   2238 sec
+[2020-12-04 21:30:49,094 INFO] Step 5100/20000; acc:  84.90; ppl:  1.90; xent: 0.64; lr: 1.00000; 32176/951 tok/s;   2261 sec
+[2020-12-04 21:31:11,425 INFO] Step 5150/20000; acc:  85.12; ppl:  1.90; xent: 0.64; lr: 1.00000; 32155/970 tok/s;   2284 sec
+[2020-12-04 21:31:26,510 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:31:26,515 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:31:26,532 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:31:26,548 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:31:26,576 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:31:26,620 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:31:34,382 INFO] Step 5200/20000; acc:  85.67; ppl:  1.85; xent: 0.61; lr: 1.00000; 32394/981 tok/s;   2307 sec
+[2020-12-04 21:31:55,612 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:31:55,614 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:31:55,617 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:31:55,626 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:31:58,094 INFO] Step 5250/20000; acc:  87.37; ppl:  1.71; xent: 0.54; lr: 1.00000; 32322/961 tok/s;   2330 sec
+[2020-12-04 21:32:17,962 INFO] Step 5300/20000; acc:  87.40; ppl:  1.74; xent: 0.56; lr: 1.00000; 30810/1199 tok/s;   2350 sec
+[2020-12-04 21:32:39,994 INFO] Step 5350/20000; acc:  87.39; ppl:  1.72; xent: 0.54; lr: 1.00000; 29255/1107 tok/s;   2372 sec
+[2020-12-04 21:32:51,133 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:33:01,963 INFO] Step 5400/20000; acc:  86.49; ppl:  1.77; xent: 0.57; lr: 1.00000; 30201/1111 tok/s;   2394 sec
+[2020-12-04 21:33:18,094 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:33:18,098 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:33:18,101 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:33:18,116 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:33:18,142 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:33:24,107 INFO] Step 5450/20000; acc:  85.02; ppl:  1.80; xent: 0.59; lr: 1.00000; 30484/1084 tok/s;   2416 sec
+[2020-12-04 21:33:44,759 INFO] Step 5500/20000; acc:  83.65; ppl:  1.93; xent: 0.66; lr: 1.00000; 32028/1115 tok/s;   2437 sec
+[2020-12-04 21:33:47,192 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:34:07,653 INFO] Step 5550/20000; acc:  84.05; ppl:  1.90; xent: 0.64; lr: 1.00000; 31822/977 tok/s;   2460 sec
+[2020-12-04 21:34:30,118 INFO] Step 5600/20000; acc:  84.87; ppl:  1.87; xent: 0.63; lr: 1.00000; 30259/986 tok/s;   2482 sec
+[2020-12-04 21:34:53,553 INFO] Step 5650/20000; acc:  85.75; ppl:  1.82; xent: 0.60; lr: 1.00000; 32436/930 tok/s;   2506 sec
+[2020-12-04 21:35:14,132 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:35:14,137 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:35:14,155 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:35:14,173 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:35:14,201 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:35:14,212 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:35:14,218 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:35:14,220 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:35:14,223 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:35:17,549 INFO] Step 5700/20000; acc:  86.20; ppl:  1.79; xent: 0.58; lr: 1.00000; 31213/923 tok/s;   2530 sec
+[2020-12-04 21:35:39,515 INFO] Step 5750/20000; acc:  87.97; ppl:  1.65; xent: 0.50; lr: 1.00000; 31380/1044 tok/s;   2552 sec
+[2020-12-04 21:35:44,707 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:36:01,763 INFO] Step 5800/20000; acc:  87.88; ppl:  1.68; xent: 0.52; lr: 1.00000; 30413/1058 tok/s;   2574 sec
+[2020-12-04 21:36:23,734 INFO] Step 5850/20000; acc:  87.53; ppl:  1.71; xent: 0.54; lr: 1.00000; 29464/1117 tok/s;   2596 sec
+[2020-12-04 21:36:39,714 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:36:45,932 INFO] Step 5900/20000; acc:  86.83; ppl:  1.71; xent: 0.54; lr: 1.00000; 29879/1109 tok/s;   2618 sec
+[2020-12-04 21:37:06,084 INFO] Step 5950/20000; acc:  85.62; ppl:  1.76; xent: 0.57; lr: 1.00000; 31199/1179 tok/s;   2638 sec
+[2020-12-04 21:37:07,275 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:37:07,278 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:37:07,282 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:37:07,298 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:37:07,319 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:37:29,407 INFO] Step 6000/20000; acc:  83.97; ppl:  1.87; xent: 0.62; lr: 1.00000; 31221/998 tok/s;   2662 sec
+[2020-12-04 21:37:36,135 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:37:51,309 INFO] Step 6050/20000; acc:  83.81; ppl:  1.91; xent: 0.65; lr: 1.00000; 31222/1013 tok/s;   2684 sec
+[2020-12-04 21:38:15,274 INFO] Step 6100/20000; acc:  84.77; ppl:  1.85; xent: 0.62; lr: 1.00000; 30635/929 tok/s;   2708 sec
+[2020-12-04 21:38:34,740 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:38:39,431 INFO] Step 6150/20000; acc:  86.42; ppl:  1.74; xent: 0.55; lr: 1.00000; 31874/917 tok/s;   2732 sec
+[2020-12-04 21:38:59,411 INFO] Step 6200/20000; acc:  86.37; ppl:  1.74; xent: 0.56; lr: 1.00000; 31892/1099 tok/s;   2752 sec
+[2020-12-04 21:39:03,654 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:39:03,673 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:39:03,691 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:39:03,719 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:39:03,730 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:39:03,735 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:39:03,737 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:39:03,740 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:39:03,778 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:39:23,168 INFO] Step 6250/20000; acc:  88.18; ppl:  1.62; xent: 0.48; lr: 1.00000; 31362/972 tok/s;   2775 sec
+[2020-12-04 21:39:45,724 INFO] Step 6300/20000; acc:  88.02; ppl:  1.65; xent: 0.50; lr: 1.00000; 30998/1018 tok/s;   2798 sec
+[2020-12-04 21:40:07,573 INFO] Step 6350/20000; acc:  87.70; ppl:  1.66; xent: 0.51; lr: 1.00000; 29951/1128 tok/s;   2820 sec
+[2020-12-04 21:40:27,866 INFO] Step 6400/20000; acc:  87.36; ppl:  1.68; xent: 0.52; lr: 1.00000; 30496/1221 tok/s;   2840 sec
+[2020-12-04 21:40:27,938 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:40:27,961 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:40:27,990 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:40:49,673 INFO] Step 6450/20000; acc:  85.83; ppl:  1.74; xent: 0.56; lr: 1.00000; 30126/1085 tok/s;   2862 sec
+[2020-12-04 21:40:56,133 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:40:56,151 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:40:56,174 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:41:12,915 INFO] Step 6500/20000; acc:  83.86; ppl:  1.86; xent: 0.62; lr: 1.00000; 29133/991 tok/s;   2885 sec
+[2020-12-04 21:41:26,001 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:41:36,202 INFO] Step 6550/20000; acc:  84.53; ppl:  1.83; xent: 0.60; lr: 1.00000; 31210/972 tok/s;   2908 sec
+[2020-12-04 21:41:59,997 INFO] Step 6600/20000; acc:  85.00; ppl:  1.82; xent: 0.60; lr: 1.00000; 31731/933 tok/s;   2932 sec
+[2020-12-04 21:42:20,018 INFO] Step 6650/20000; acc:  86.65; ppl:  1.72; xent: 0.54; lr: 1.00000; 32477/1089 tok/s;   2952 sec
+[2020-12-04 21:42:23,540 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:42:23,545 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:42:43,750 INFO] Step 6700/20000; acc:  87.50; ppl:  1.65; xent: 0.50; lr: 1.00000; 31600/952 tok/s;   2976 sec
+[2020-12-04 21:42:52,755 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:42:52,773 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:42:52,933 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:42:52,944 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:42:52,950 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:42:52,951 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:42:52,955 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:42:52,962 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:43:06,988 INFO] Step 6750/20000; acc:  87.58; ppl:  1.64; xent: 0.49; lr: 1.00000; 31374/963 tok/s;   2999 sec
+[2020-12-04 21:43:30,171 INFO] Step 6800/20000; acc:  87.94; ppl:  1.62; xent: 0.48; lr: 1.00000; 31193/1007 tok/s;   3022 sec
+[2020-12-04 21:43:52,409 INFO] Step 6850/20000; acc:  87.97; ppl:  1.63; xent: 0.49; lr: 1.00000; 29863/1102 tok/s;   3045 sec
+[2020-12-04 21:44:12,097 INFO] Step 6900/20000; acc:  87.98; ppl:  1.63; xent: 0.49; lr: 1.00000; 28531/1255 tok/s;   3064 sec
+[2020-12-04 21:44:17,673 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:44:17,697 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:44:17,701 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:44:17,704 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:44:34,289 INFO] Step 6950/20000; acc:  85.75; ppl:  1.73; xent: 0.55; lr: 1.00000; 29910/1063 tok/s;   3087 sec
+[2020-12-04 21:44:45,758 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:44:45,778 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:44:57,198 INFO] Step 7000/20000; acc:  84.74; ppl:  1.81; xent: 0.59; lr: 1.00000; 31055/1016 tok/s;   3109 sec
+[2020-12-04 21:45:14,663 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:45:20,496 INFO] Step 7050/20000; acc:  83.80; ppl:  1.84; xent: 0.61; lr: 1.00000; 31285/982 tok/s;   3133 sec
+[2020-12-04 21:45:40,814 INFO] Step 7100/20000; acc:  85.65; ppl:  1.78; xent: 0.58; lr: 1.00000; 32567/1077 tok/s;   3153 sec
+[2020-12-04 21:46:04,603 INFO] Step 7150/20000; acc:  86.73; ppl:  1.71; xent: 0.54; lr: 1.00000; 31868/923 tok/s;   3177 sec
+[2020-12-04 21:46:12,445 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:46:12,449 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:46:12,467 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:46:27,024 INFO] Step 7200/20000; acc:  87.25; ppl:  1.64; xent: 0.50; lr: 1.00000; 30870/1000 tok/s;   3199 sec
+[2020-12-04 21:46:42,129 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:46:42,159 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:46:42,171 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:46:42,176 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:46:42,178 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:46:42,182 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:46:42,190 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:46:51,473 INFO] Step 7250/20000; acc:  87.33; ppl:  1.64; xent: 0.50; lr: 1.00000; 31344/923 tok/s;   3224 sec
+[2020-12-04 21:47:15,568 INFO] Step 7300/20000; acc:  88.48; ppl:  1.58; xent: 0.45; lr: 1.00000; 30762/971 tok/s;   3248 sec
+[2020-12-04 21:47:34,808 INFO] Step 7350/20000; acc:  88.66; ppl:  1.57; xent: 0.45; lr: 1.00000; 30237/1243 tok/s;   3267 sec
+[2020-12-04 21:47:56,017 INFO] Step 7400/20000; acc:  88.20; ppl:  1.60; xent: 0.47; lr: 1.00000; 29389/1175 tok/s;   3288 sec
+[2020-12-04 21:48:06,056 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:48:06,079 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:48:06,083 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:48:06,086 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:48:06,101 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:48:17,767 INFO] Step 7450/20000; acc:  86.65; ppl:  1.66; xent: 0.51; lr: 1.00000; 30137/1077 tok/s;   3310 sec
+[2020-12-04 21:48:34,333 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:48:40,699 INFO] Step 7500/20000; acc:  84.42; ppl:  1.81; xent: 0.59; lr: 1.00000; 31529/1031 tok/s;   3333 sec
+[2020-12-04 21:49:01,514 INFO] Step 7550/20000; acc:  83.92; ppl:  1.83; xent: 0.60; lr: 1.00000; 32037/1106 tok/s;   3354 sec
+[2020-12-04 21:49:02,802 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:49:24,541 INFO] Step 7600/20000; acc:  86.47; ppl:  1.70; xent: 0.53; lr: 1.00000; 32216/950 tok/s;   3377 sec
+[2020-12-04 21:49:47,653 INFO] Step 7650/20000; acc:  86.65; ppl:  1.73; xent: 0.55; lr: 1.00000; 30485/952 tok/s;   3400 sec
+[2020-12-04 21:50:01,580 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:50:01,586 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:50:01,632 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:50:01,652 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:50:11,571 INFO] Step 7700/20000; acc:  87.44; ppl:  1.62; xent: 0.48; lr: 1.00000; 31328/932 tok/s;   3424 sec
+[2020-12-04 21:50:30,813 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:50:30,825 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:50:30,834 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:50:30,836 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:50:30,840 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:50:30,847 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:50:35,611 INFO] Step 7750/20000; acc:  88.18; ppl:  1.58; xent: 0.46; lr: 1.00000; 31962/948 tok/s;   3448 sec
+[2020-12-04 21:50:55,467 INFO] Step 7800/20000; acc:  88.55; ppl:  1.56; xent: 0.45; lr: 1.00000; 32251/1163 tok/s;   3468 sec
+[2020-12-04 21:51:17,042 INFO] Step 7850/20000; acc:  89.05; ppl:  1.54; xent: 0.43; lr: 1.00000; 29931/1123 tok/s;   3489 sec
+[2020-12-04 21:51:38,210 INFO] Step 7900/20000; acc:  88.58; ppl:  1.57; xent: 0.45; lr: 1.00000; 30006/1150 tok/s;   3510 sec
+[2020-12-04 21:51:52,517 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:51:52,546 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:51:52,550 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:51:52,553 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:51:52,568 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:51:52,588 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:51:59,540 INFO] Step 7950/20000; acc:  86.95; ppl:  1.63; xent: 0.49; lr: 1.00000; 30433/1119 tok/s;   3532 sec
+[2020-12-04 21:52:21,176 INFO] Step 8000/20000; acc:  84.27; ppl:  1.82; xent: 0.60; lr: 1.00000; 32392/1095 tok/s;   3553 sec
+[2020-12-04 21:52:21,413 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:52:43,757 INFO] Step 8050/20000; acc:  84.14; ppl:  1.79; xent: 0.58; lr: 1.00000; 30185/1012 tok/s;   3576 sec
+[2020-12-04 21:53:06,474 INFO] Step 8100/20000; acc:  86.25; ppl:  1.72; xent: 0.54; lr: 1.00000; 30749/967 tok/s;   3599 sec
+[2020-12-04 21:53:29,686 INFO] Step 8150/20000; acc:  87.13; ppl:  1.66; xent: 0.51; lr: 1.00000; 32269/947 tok/s;   3622 sec
+[2020-12-04 21:53:48,208 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:53:48,214 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:53:48,244 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:53:48,262 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:53:53,404 INFO] Step 8200/20000; acc:  87.12; ppl:  1.66; xent: 0.50; lr: 1.00000; 32601/939 tok/s;   3646 sec
+[2020-12-04 21:54:13,969 INFO] Step 8250/20000; acc:  88.73; ppl:  1.54; xent: 0.43; lr: 1.00000; 31813/1100 tok/s;   3666 sec
+[2020-12-04 21:54:17,568 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:54:17,579 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:54:17,592 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:54:17,594 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:54:17,598 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:54:17,606 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:54:37,316 INFO] Step 8300/20000; acc:  88.99; ppl:  1.53; xent: 0.43; lr: 1.00000; 31156/1005 tok/s;   3690 sec
+[2020-12-04 21:54:58,933 INFO] Step 8350/20000; acc:  89.03; ppl:  1.53; xent: 0.42; lr: 1.00000; 30671/1096 tok/s;   3711 sec
+[2020-12-04 21:55:20,438 INFO] Step 8400/20000; acc:  88.67; ppl:  1.55; xent: 0.44; lr: 1.00000; 29767/1144 tok/s;   3733 sec
+[2020-12-04 21:55:40,025 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:55:40,055 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:55:40,059 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:55:40,062 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:55:40,078 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:55:40,100 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:55:42,687 INFO] Step 8450/20000; acc:  87.73; ppl:  1.60; xent: 0.47; lr: 1.00000; 28984/1096 tok/s;   3755 sec
+[2020-12-04 21:56:03,929 INFO] Step 8500/20000; acc:  84.65; ppl:  1.81; xent: 0.59; lr: 1.00000; 30822/1088 tok/s;   3776 sec
+[2020-12-04 21:56:09,780 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 21:56:26,260 INFO] Step 8550/20000; acc:  84.64; ppl:  1.77; xent: 0.57; lr: 1.00000; 31534/1011 tok/s;   3798 sec
+[2020-12-04 21:56:49,281 INFO] Step 8600/20000; acc:  85.82; ppl:  1.72; xent: 0.54; lr: 1.00000; 31655/977 tok/s;   3822 sec
+[2020-12-04 21:57:12,195 INFO] Step 8650/20000; acc:  86.81; ppl:  1.64; xent: 0.49; lr: 1.00000; 32779/952 tok/s;   3844 sec
+[2020-12-04 21:57:33,139 INFO] Step 8700/20000; acc:  87.67; ppl:  1.61; xent: 0.48; lr: 1.00000; 32644/1052 tok/s;   3865 sec
+[2020-12-04 21:57:35,628 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 21:57:35,632 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 21:57:35,650 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 21:57:35,667 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 21:57:35,696 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 21:57:56,896 INFO] Step 8750/20000; acc:  89.23; ppl:  1.52; xent: 0.42; lr: 1.00000; 31934/964 tok/s;   3889 sec
+[2020-12-04 21:58:04,822 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 21:58:04,828 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 21:58:04,829 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 21:58:04,834 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 21:58:04,841 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 21:58:18,844 INFO] Step 8800/20000; acc:  89.10; ppl:  1.53; xent: 0.42; lr: 1.00000; 30485/1062 tok/s;   3911 sec
+[2020-12-04 21:58:42,227 INFO] Step 8850/20000; acc:  88.76; ppl:  1.54; xent: 0.43; lr: 1.00000; 30121/1013 tok/s;   3934 sec
+[2020-12-04 21:59:04,337 INFO] Step 8900/20000; acc:  88.61; ppl:  1.55; xent: 0.44; lr: 1.00000; 29419/1119 tok/s;   3957 sec
+[2020-12-04 21:59:23,375 INFO] Step 8950/20000; acc:  87.38; ppl:  1.61; xent: 0.48; lr: 1.00000; 30258/1273 tok/s;   3976 sec
+[2020-12-04 21:59:27,888 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 21:59:27,913 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 21:59:27,917 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 21:59:27,920 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 21:59:27,936 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 21:59:27,955 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 21:59:46,162 INFO] Step 9000/20000; acc:  85.34; ppl:  1.74; xent: 0.55; lr: 1.00000; 30871/1024 tok/s;   3998 sec
+[2020-12-04 21:59:56,978 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:00:08,404 INFO] Step 9050/20000; acc:  84.82; ppl:  1.79; xent: 0.58; lr: 1.00000; 31582/1012 tok/s;   4021 sec
+[2020-12-04 22:00:31,775 INFO] Step 9100/20000; acc:  85.49; ppl:  1.71; xent: 0.54; lr: 1.00000; 31520/971 tok/s;   4044 sec
+[2020-12-04 22:00:52,416 INFO] Step 9150/20000; acc:  87.50; ppl:  1.61; xent: 0.48; lr: 1.00000; 33590/1047 tok/s;   4065 sec
+[2020-12-04 22:01:16,004 INFO] Step 9200/20000; acc:  87.77; ppl:  1.60; xent: 0.47; lr: 1.00000; 31833/938 tok/s;   4088 sec
+[2020-12-04 22:01:22,917 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:01:22,921 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:01:23,076 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:01:23,095 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:01:23,128 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:01:23,142 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:01:39,466 INFO] Step 9250/20000; acc:  88.82; ppl:  1.53; xent: 0.43; lr: 1.00000; 30235/969 tok/s;   4112 sec
+[2020-12-04 22:01:53,113 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:01:53,115 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:01:53,119 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:01:53,128 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:02:02,796 INFO] Step 9300/20000; acc:  89.12; ppl:  1.52; xent: 0.42; lr: 1.00000; 31434/988 tok/s;   4135 sec
+[2020-12-04 22:02:25,185 INFO] Step 9350/20000; acc:  89.06; ppl:  1.52; xent: 0.42; lr: 1.00000; 31495/1068 tok/s;   4157 sec
+[2020-12-04 22:02:43,999 INFO] Step 9400/20000; acc:  88.55; ppl:  1.56; xent: 0.44; lr: 1.00000; 29627/1310 tok/s;   4176 sec
+[2020-12-04 22:02:48,021 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:03:05,621 INFO] Step 9450/20000; acc:  86.96; ppl:  1.64; xent: 0.49; lr: 1.00000; 29631/1118 tok/s;   4198 sec
+[2020-12-04 22:03:15,277 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:03:15,282 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:03:15,285 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:03:15,300 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:03:15,320 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:03:28,298 INFO] Step 9500/20000; acc:  86.35; ppl:  1.69; xent: 0.52; lr: 1.00000; 30348/1034 tok/s;   4221 sec
+[2020-12-04 22:03:44,377 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:03:51,356 INFO] Step 9550/20000; acc:  85.07; ppl:  1.76; xent: 0.57; lr: 1.00000; 31598/986 tok/s;   4244 sec
+[2020-12-04 22:04:12,949 INFO] Step 9600/20000; acc:  85.40; ppl:  1.72; xent: 0.54; lr: 1.00000; 32215/1043 tok/s;   4265 sec
+[2020-12-04 22:04:36,903 INFO] Step 9650/20000; acc:  87.37; ppl:  1.60; xent: 0.47; lr: 1.00000; 29864/919 tok/s;   4289 sec
+[2020-12-04 22:04:59,353 INFO] Step 9700/20000; acc:  88.12; ppl:  1.58; xent: 0.46; lr: 1.00000; 31318/965 tok/s;   4312 sec
+[2020-12-04 22:05:12,229 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:05:12,346 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:05:12,365 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:05:12,384 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:05:12,414 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:05:12,425 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:05:12,431 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:05:12,433 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:05:12,436 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:05:23,156 INFO] Step 9750/20000; acc:  88.59; ppl:  1.54; xent: 0.43; lr: 1.00000; 31571/957 tok/s;   4335 sec
+[2020-12-04 22:05:42,428 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:05:47,503 INFO] Step 9800/20000; acc:  89.75; ppl:  1.48; xent: 0.39; lr: 1.00000; 31702/939 tok/s;   4360 sec
+[2020-12-04 22:06:06,772 INFO] Step 9850/20000; acc:  89.07; ppl:  1.51; xent: 0.41; lr: 1.00000; 30348/1235 tok/s;   4379 sec
+[2020-12-04 22:06:29,151 INFO] Step 9900/20000; acc:  88.65; ppl:  1.54; xent: 0.43; lr: 1.00000; 29244/1121 tok/s;   4401 sec
+[2020-12-04 22:06:37,714 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:06:50,954 INFO] Step 9950/20000; acc:  87.49; ppl:  1.60; xent: 0.47; lr: 1.00000; 29581/1100 tok/s;   4423 sec
+[2020-12-04 22:07:05,627 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:07:05,631 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:07:05,635 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:07:05,652 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:07:05,672 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:07:13,969 INFO] Step 10000/20000; acc:  86.34; ppl:  1.67; xent: 0.51; lr: 1.00000; 29746/1021 tok/s;   4446 sec
+[2020-12-04 22:07:13,971 INFO] valid's transforms: TransformPipe()
+[2020-12-04 22:07:13,972 INFO] Loading ParallelCorpus(data/dataset1_val_src_trunc.txt, data/dataset1_val_tgt.txt, align=None)...
+[2020-12-04 22:07:14,066 WARNING] Empty line exists in valid#1826.
+[2020-12-04 22:07:36,231 WARNING] Empty line exists in valid#3819.
+[2020-12-04 22:07:36,234 WARNING] Empty line exists in valid#3879.
+[2020-12-04 22:07:59,072 INFO] Validation perplexity: 2.63962
+[2020-12-04 22:07:59,073 INFO] Validation accuracy: 80.1677
+[2020-12-04 22:08:00,484 INFO] Saving checkpoint /home/ubuntu/model_step_10000.pt
+[2020-12-04 22:08:22,323 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:08:24,944 INFO] Step 10050/20000; acc:  85.02; ppl:  1.75; xent: 0.56; lr: 1.00000; 10455/326 tok/s;   4517 sec
+[2020-12-04 22:08:45,007 INFO] Step 10100/20000; acc:  86.04; ppl:  1.69; xent: 0.52; lr: 1.00000; 31953/1100 tok/s;   4537 sec
+[2020-12-04 22:09:08,274 INFO] Step 10150/20000; acc:  87.53; ppl:  1.61; xent: 0.48; lr: 1.00000; 31251/950 tok/s;   4561 sec
+[2020-12-04 22:09:19,972 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:09:31,229 INFO] Step 10200/20000; acc:  88.28; ppl:  1.56; xent: 0.45; lr: 1.00000; 32360/964 tok/s;   4583 sec
+[2020-12-04 22:09:48,500 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:09:48,518 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:09:48,536 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:09:48,565 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:09:48,599 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:09:48,604 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:09:48,606 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:09:48,748 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:09:48,756 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:09:54,526 INFO] Step 10250/20000; acc:  88.68; ppl:  1.54; xent: 0.43; lr: 1.00000; 32081/959 tok/s;   4607 sec
+[2020-12-04 22:10:16,591 INFO] Step 10300/20000; acc:  89.69; ppl:  1.48; xent: 0.39; lr: 1.00000; 31639/1035 tok/s;   4629 sec
+[2020-12-04 22:10:39,109 INFO] Step 10350/20000; acc:  89.44; ppl:  1.51; xent: 0.41; lr: 1.00000; 30186/1063 tok/s;   4651 sec
+[2020-12-04 22:10:59,445 INFO] Step 10400/20000; acc:  89.19; ppl:  1.50; xent: 0.41; lr: 1.00000; 29513/1201 tok/s;   4672 sec
+[2020-12-04 22:11:13,001 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:11:13,024 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:11:13,027 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:11:13,030 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:11:21,562 INFO] Step 10450/20000; acc:  88.10; ppl:  1.57; xent: 0.45; lr: 1.00000; 30402/1113 tok/s;   4694 sec
+[2020-12-04 22:11:40,594 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:11:40,613 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:11:43,932 INFO] Step 10500/20000; acc:  86.14; ppl:  1.67; xent: 0.51; lr: 1.00000; 31016/1054 tok/s;   4716 sec
+[2020-12-04 22:12:04,520 INFO] Step 10550/20000; acc:  84.60; ppl:  1.78; xent: 0.58; lr: 1.00000; 31805/1110 tok/s;   4737 sec
+[2020-12-04 22:12:09,287 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:12:26,928 INFO] Step 10600/20000; acc:  87.09; ppl:  1.62; xent: 0.48; lr: 1.00000; 31718/1001 tok/s;   4759 sec
+[2020-12-04 22:12:49,227 INFO] Step 10650/20000; acc:  86.83; ppl:  1.63; xent: 0.49; lr: 1.00000; 31763/976 tok/s;   4781 sec
+[2020-12-04 22:13:06,654 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:13:06,659 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:13:13,407 INFO] Step 10700/20000; acc:  88.42; ppl:  1.53; xent: 0.43; lr: 1.00000; 31486/932 tok/s;   4806 sec
+[2020-12-04 22:13:34,700 INFO] Step 10750/20000; acc:  88.77; ppl:  1.53; xent: 0.43; lr: 1.00000; 32809/1038 tok/s;   4827 sec
+[2020-12-04 22:13:35,895 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:13:35,913 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:13:35,944 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:13:35,955 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:13:35,976 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:13:35,977 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:13:35,980 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:13:36,122 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:13:58,382 INFO] Step 10800/20000; acc:  89.36; ppl:  1.47; xent: 0.38; lr: 1.00000; 32268/972 tok/s;   4851 sec
+[2020-12-04 22:14:19,614 INFO] Step 10850/20000; acc:  89.49; ppl:  1.49; xent: 0.40; lr: 1.00000; 30429/1113 tok/s;   4872 sec
+[2020-12-04 22:14:41,246 INFO] Step 10900/20000; acc:  89.21; ppl:  1.51; xent: 0.41; lr: 1.00000; 30056/1137 tok/s;   4893 sec
+[2020-12-04 22:14:58,436 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:14:58,473 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:14:58,477 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:14:58,479 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:15:03,088 INFO] Step 10950/20000; acc:  88.42; ppl:  1.57; xent: 0.45; lr: 1.00000; 30577/1119 tok/s;   4915 sec
+[2020-12-04 22:15:22,309 INFO] Step 11000/20000; acc:  86.24; ppl:  1.67; xent: 0.51; lr: 1.00000; 30999/1230 tok/s;   4935 sec
+[2020-12-04 22:15:26,171 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:15:26,192 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:15:44,752 INFO] Step 11050/20000; acc:  85.82; ppl:  1.71; xent: 0.54; lr: 1.00000; 31337/1019 tok/s;   4957 sec
+[2020-12-04 22:15:55,163 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:16:08,106 INFO] Step 11100/20000; acc:  86.31; ppl:  1.67; xent: 0.52; lr: 1.00000; 30538/961 tok/s;   4980 sec
+[2020-12-04 22:16:30,925 INFO] Step 11150/20000; acc:  87.35; ppl:  1.61; xent: 0.47; lr: 1.00000; 32245/958 tok/s;   5003 sec
+[2020-12-04 22:16:52,558 INFO] Step 11200/20000; acc:  87.65; ppl:  1.60; xent: 0.47; lr: 1.00000; 33639/1031 tok/s;   5025 sec
+[2020-12-04 22:16:52,641 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:16:52,645 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:16:52,662 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:17:15,326 INFO] Step 11250/20000; acc:  89.26; ppl:  1.49; xent: 0.40; lr: 1.00000; 31646/984 tok/s;   5048 sec
+[2020-12-04 22:17:21,703 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:17:21,732 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:17:21,743 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:17:21,749 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:17:21,751 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:17:21,755 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:17:21,763 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:17:37,917 INFO] Step 11300/20000; acc:  89.47; ppl:  1.49; xent: 0.40; lr: 1.00000; 31274/1025 tok/s;   5070 sec
+[2020-12-04 22:18:00,276 INFO] Step 11350/20000; acc:  89.73; ppl:  1.48; xent: 0.39; lr: 1.00000; 31769/1033 tok/s;   5093 sec
+[2020-12-04 22:18:22,029 INFO] Step 11400/20000; acc:  89.61; ppl:  1.49; xent: 0.40; lr: 1.00000; 30660/1133 tok/s;   5114 sec
+[2020-12-04 22:18:40,372 INFO] Step 11450/20000; acc:  88.91; ppl:  1.51; xent: 0.41; lr: 1.00000; 30047/1331 tok/s;   5133 sec
+[2020-12-04 22:18:43,774 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:18:43,800 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:18:43,804 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:18:43,807 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:18:43,823 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:19:04,024 INFO] Step 11500/20000; acc:  86.18; ppl:  1.68; xent: 0.52; lr: 1.00000; 29679/987 tok/s;   5156 sec
+[2020-12-04 22:19:12,713 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:19:26,243 INFO] Step 11550/20000; acc:  85.24; ppl:  1.73; xent: 0.55; lr: 1.00000; 30961/1042 tok/s;   5178 sec
+[2020-12-04 22:19:40,986 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:19:48,868 INFO] Step 11600/20000; acc:  85.81; ppl:  1.71; xent: 0.54; lr: 1.00000; 31641/1014 tok/s;   5201 sec
+[2020-12-04 22:20:11,873 INFO] Step 11650/20000; acc:  87.17; ppl:  1.61; xent: 0.48; lr: 1.00000; 32886/951 tok/s;   5224 sec
+[2020-12-04 22:20:32,686 INFO] Step 11700/20000; acc:  87.89; ppl:  1.58; xent: 0.46; lr: 1.00000; 32117/1056 tok/s;   5245 sec
+[2020-12-04 22:20:38,526 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:20:38,531 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:20:38,549 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:20:38,565 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:20:55,604 INFO] Step 11750/20000; acc:  89.20; ppl:  1.49; xent: 0.40; lr: 1.00000; 31721/989 tok/s;   5268 sec
+[2020-12-04 22:21:07,428 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:21:07,439 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:21:07,445 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:21:07,446 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:21:07,450 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:21:07,457 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:21:18,655 INFO] Step 11800/20000; acc:  89.18; ppl:  1.49; xent: 0.40; lr: 1.00000; 32319/992 tok/s;   5291 sec
+[2020-12-04 22:21:42,123 INFO] Step 11850/20000; acc:  89.68; ppl:  1.46; xent: 0.38; lr: 1.00000; 31001/1001 tok/s;   5314 sec
+[2020-12-04 22:22:01,591 INFO] Step 11900/20000; acc:  90.03; ppl:  1.46; xent: 0.38; lr: 1.00000; 30105/1239 tok/s;   5334 sec
+[2020-12-04 22:22:22,850 INFO] Step 11950/20000; acc:  88.86; ppl:  1.52; xent: 0.42; lr: 1.00000; 30079/1159 tok/s;   5355 sec
+[2020-12-04 22:22:29,776 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:22:29,799 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:22:29,802 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:22:29,805 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:22:29,833 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:22:29,852 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:22:43,915 INFO] Step 12000/20000; acc:  86.50; ppl:  1.66; xent: 0.50; lr: 1.00000; 30075/1120 tok/s;   5376 sec
+[2020-12-04 22:22:58,487 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:23:06,867 INFO] Step 12050/20000; acc:  84.99; ppl:  1.74; xent: 0.55; lr: 1.00000; 32056/1001 tok/s;   5399 sec
+[2020-12-04 22:23:29,538 INFO] Step 12100/20000; acc:  85.09; ppl:  1.75; xent: 0.56; lr: 1.00000; 31602/1014 tok/s;   5422 sec
+[2020-12-04 22:23:49,783 INFO] Step 12150/20000; acc:  87.62; ppl:  1.57; xent: 0.45; lr: 1.00000; 33400/1067 tok/s;   5442 sec
+[2020-12-04 22:24:12,767 INFO] Step 12200/20000; acc:  88.63; ppl:  1.53; xent: 0.43; lr: 1.00000; 32068/968 tok/s;   5465 sec
+[2020-12-04 22:24:23,548 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:24:23,552 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:24:23,569 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:24:23,585 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:24:35,672 INFO] Step 12250/20000; acc:  88.53; ppl:  1.52; xent: 0.42; lr: 1.00000; 31418/979 tok/s;   5488 sec
+[2020-12-04 22:24:53,597 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:24:53,609 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:24:53,614 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:24:53,616 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:24:53,620 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:24:53,628 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:25:00,308 INFO] Step 12300/20000; acc:  89.53; ppl:  1.47; xent: 0.39; lr: 1.00000; 30687/927 tok/s;   5513 sec
+[2020-12-04 22:25:20,865 INFO] Step 12350/20000; acc:  90.00; ppl:  1.46; xent: 0.38; lr: 1.00000; 32705/1129 tok/s;   5533 sec
+[2020-12-04 22:25:42,747 INFO] Step 12400/20000; acc:  89.70; ppl:  1.48; xent: 0.39; lr: 1.00000; 30301/1121 tok/s;   5555 sec
+[2020-12-04 22:26:03,157 INFO] Step 12450/20000; acc:  88.97; ppl:  1.52; xent: 0.42; lr: 1.00000; 29266/1202 tok/s;   5575 sec
+[2020-12-04 22:26:15,156 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:26:15,178 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:26:15,182 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:26:15,185 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:26:15,212 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:26:15,231 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:26:25,099 INFO] Step 12500/20000; acc:  87.29; ppl:  1.62; xent: 0.48; lr: 1.00000; 30528/1084 tok/s;   5597 sec
+[2020-12-04 22:26:44,302 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:26:48,816 INFO] Step 12550/20000; acc:  84.87; ppl:  1.76; xent: 0.56; lr: 1.00000; 32078/979 tok/s;   5621 sec
+[2020-12-04 22:27:08,071 INFO] Step 12600/20000; acc:  85.57; ppl:  1.71; xent: 0.53; lr: 1.00000; 31963/1164 tok/s;   5640 sec
+[2020-12-04 22:27:30,873 INFO] Step 12650/20000; acc:  88.34; ppl:  1.55; xent: 0.44; lr: 1.00000; 31725/957 tok/s;   5663 sec
+[2020-12-04 22:27:54,380 INFO] Step 12700/20000; acc:  88.08; ppl:  1.57; xent: 0.45; lr: 1.00000; 31104/935 tok/s;   5687 sec
+[2020-12-04 22:28:10,551 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:28:10,555 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:28:10,591 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:28:10,609 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:28:10,637 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:28:17,697 INFO] Step 12750/20000; acc:  88.85; ppl:  1.51; xent: 0.41; lr: 1.00000; 32264/969 tok/s;   5710 sec
+[2020-12-04 22:28:39,437 INFO] Step 12800/20000; acc:  89.93; ppl:  1.46; xent: 0.38; lr: 1.00000; 33425/1038 tok/s;   5732 sec
+[2020-12-04 22:28:39,448 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:28:39,454 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:28:39,456 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:28:39,459 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:28:39,581 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:29:01,260 INFO] Step 12850/20000; acc:  89.83; ppl:  1.46; xent: 0.38; lr: 1.00000; 30913/1089 tok/s;   5753 sec
+[2020-12-04 22:29:22,484 INFO] Step 12900/20000; acc:  89.42; ppl:  1.49; xent: 0.40; lr: 1.00000; 29807/1132 tok/s;   5775 sec
+[2020-12-04 22:29:44,363 INFO] Step 12950/20000; acc:  88.78; ppl:  1.51; xent: 0.41; lr: 1.00000; 29818/1126 tok/s;   5797 sec
+[2020-12-04 22:30:01,053 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:30:01,077 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:30:01,081 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:30:01,088 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:30:01,102 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:30:01,122 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:30:06,549 INFO] Step 13000/20000; acc:  87.45; ppl:  1.60; xent: 0.47; lr: 1.00000; 30661/1089 tok/s;   5819 sec
+[2020-12-04 22:30:26,970 INFO] Step 13050/20000; acc:  85.35; ppl:  1.73; xent: 0.55; lr: 1.00000; 31610/1131 tok/s;   5839 sec
+[2020-12-04 22:30:30,475 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:30:50,155 INFO] Step 13100/20000; acc:  85.97; ppl:  1.68; xent: 0.52; lr: 1.00000; 31204/963 tok/s;   5862 sec
+[2020-12-04 22:31:12,880 INFO] Step 13150/20000; acc:  86.71; ppl:  1.63; xent: 0.49; lr: 1.00000; 31059/978 tok/s;   5885 sec
+[2020-12-04 22:31:35,463 INFO] Step 13200/20000; acc:  88.20; ppl:  1.55; xent: 0.44; lr: 1.00000; 32597/966 tok/s;   5908 sec
+[2020-12-04 22:31:56,398 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:31:56,403 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:31:56,420 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:31:56,437 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:31:56,476 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:31:56,487 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:31:58,815 INFO] Step 13250/20000; acc:  88.52; ppl:  1.55; xent: 0.44; lr: 1.00000; 32667/949 tok/s;   5931 sec
+[2020-12-04 22:32:21,416 INFO] Step 13300/20000; acc:  90.22; ppl:  1.43; xent: 0.36; lr: 1.00000; 29878/1003 tok/s;   5954 sec
+[2020-12-04 22:32:27,292 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:32:27,294 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:32:27,298 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:32:27,307 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:32:43,608 INFO] Step 13350/20000; acc:  90.05; ppl:  1.45; xent: 0.37; lr: 1.00000; 30948/1069 tok/s;   5976 sec
+[2020-12-04 22:33:05,629 INFO] Step 13400/20000; acc:  89.33; ppl:  1.48; xent: 0.40; lr: 1.00000; 30795/1100 tok/s;   5998 sec
+[2020-12-04 22:33:22,329 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:33:27,944 INFO] Step 13450/20000; acc:  88.76; ppl:  1.53; xent: 0.42; lr: 1.00000; 29454/1098 tok/s;   6020 sec
+[2020-12-04 22:33:47,901 INFO] Step 13500/20000; acc:  87.46; ppl:  1.59; xent: 0.46; lr: 1.00000; 29931/1206 tok/s;   6040 sec
+[2020-12-04 22:33:50,076 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:33:50,080 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:33:50,083 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:33:50,098 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:33:50,118 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:34:10,946 INFO] Step 13550/20000; acc:  85.66; ppl:  1.70; xent: 0.53; lr: 1.00000; 31748/1008 tok/s;   6063 sec
+[2020-12-04 22:34:18,622 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:34:32,383 INFO] Step 13600/20000; acc:  85.64; ppl:  1.71; xent: 0.54; lr: 1.00000; 31094/1049 tok/s;   6085 sec
+[2020-12-04 22:34:55,506 INFO] Step 13650/20000; acc:  86.66; ppl:  1.64; xent: 0.50; lr: 1.00000; 32125/969 tok/s;   6108 sec
+[2020-12-04 22:35:18,421 INFO] Step 13700/20000; acc:  88.54; ppl:  1.53; xent: 0.42; lr: 1.00000; 32714/955 tok/s;   6131 sec
+[2020-12-04 22:35:38,827 INFO] Step 13750/20000; acc:  88.13; ppl:  1.55; xent: 0.44; lr: 1.00000; 32857/1067 tok/s;   6151 sec
+[2020-12-04 22:35:43,734 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:35:43,738 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:35:43,755 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:35:43,772 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:35:43,816 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:35:43,827 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:35:43,833 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:35:43,834 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:35:43,837 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:36:02,161 INFO] Step 13800/20000; acc:  89.61; ppl:  1.45; xent: 0.37; lr: 1.00000; 31839/992 tok/s;   6174 sec
+[2020-12-04 22:36:13,681 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:36:25,179 INFO] Step 13850/20000; acc:  90.02; ppl:  1.45; xent: 0.37; lr: 1.00000; 30418/993 tok/s;   6197 sec
+[2020-12-04 22:36:47,877 INFO] Step 13900/20000; acc:  89.07; ppl:  1.48; xent: 0.39; lr: 1.00000; 29884/1078 tok/s;   6220 sec
+[2020-12-04 22:37:07,531 INFO] Step 13950/20000; acc:  88.89; ppl:  1.52; xent: 0.42; lr: 1.00000; 30436/1265 tok/s;   6240 sec
+[2020-12-04 22:37:08,844 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:37:29,712 INFO] Step 14000/20000; acc:  87.53; ppl:  1.59; xent: 0.46; lr: 1.00000; 30616/1070 tok/s;   6262 sec
+[2020-12-04 22:37:36,212 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:37:36,216 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:37:36,220 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:37:36,235 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:37:36,258 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:37:51,785 INFO] Step 14050/20000; acc:  86.32; ppl:  1.66; xent: 0.51; lr: 1.00000; 30456/1056 tok/s;   6284 sec
+[2020-12-04 22:38:05,037 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:38:14,500 INFO] Step 14100/20000; acc:  85.77; ppl:  1.71; xent: 0.54; lr: 1.00000; 31984/996 tok/s;   6307 sec
+[2020-12-04 22:38:38,024 INFO] Step 14150/20000; acc:  86.17; ppl:  1.65; xent: 0.50; lr: 1.00000; 31917/951 tok/s;   6330 sec
+[2020-12-04 22:38:57,931 INFO] Step 14200/20000; acc:  88.70; ppl:  1.53; xent: 0.42; lr: 1.00000; 32537/1088 tok/s;   6350 sec
+[2020-12-04 22:39:02,328 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:39:21,459 INFO] Step 14250/20000; acc:  89.03; ppl:  1.51; xent: 0.41; lr: 1.00000; 30629/944 tok/s;   6374 sec
+[2020-12-04 22:39:31,741 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:39:31,759 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:39:31,778 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:39:31,818 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:39:31,959 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:39:31,964 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:39:31,966 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:39:31,970 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:39:31,978 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:39:44,947 INFO] Step 14300/20000; acc:  89.51; ppl:  1.47; xent: 0.39; lr: 1.00000; 31443/973 tok/s;   6397 sec
+[2020-12-04 22:40:08,336 INFO] Step 14350/20000; acc:  90.00; ppl:  1.46; xent: 0.38; lr: 1.00000; 31704/981 tok/s;   6421 sec
+[2020-12-04 22:40:28,275 INFO] Step 14400/20000; acc:  89.65; ppl:  1.47; xent: 0.39; lr: 1.00000; 31860/1213 tok/s;   6441 sec
+[2020-12-04 22:40:49,103 INFO] Step 14450/20000; acc:  88.84; ppl:  1.51; xent: 0.41; lr: 1.00000; 29460/1201 tok/s;   6461 sec
+[2020-12-04 22:40:54,981 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:40:55,020 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:40:55,024 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:40:55,027 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:41:10,327 INFO] Step 14500/20000; acc:  87.57; ppl:  1.59; xent: 0.46; lr: 1.00000; 30108/1124 tok/s;   6483 sec
+[2020-12-04 22:41:22,606 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:41:22,625 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:41:32,927 INFO] Step 14550/20000; acc:  86.22; ppl:  1.67; xent: 0.52; lr: 1.00000; 31144/1028 tok/s;   6505 sec
+[2020-12-04 22:41:51,277 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:41:56,728 INFO] Step 14600/20000; acc:  85.64; ppl:  1.72; xent: 0.54; lr: 1.00000; 31600/962 tok/s;   6529 sec
+[2020-12-04 22:42:18,445 INFO] Step 14650/20000; acc:  86.82; ppl:  1.63; xent: 0.49; lr: 1.00000; 29122/1015 tok/s;   6551 sec
+[2020-12-04 22:42:42,015 INFO] Step 14700/20000; acc:  87.93; ppl:  1.56; xent: 0.44; lr: 1.00000; 31784/941 tok/s;   6574 sec
+[2020-12-04 22:42:50,778 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:42:50,783 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:43:04,598 INFO] Step 14750/20000; acc:  88.84; ppl:  1.52; xent: 0.42; lr: 1.00000; 31753/979 tok/s;   6597 sec
+[2020-12-04 22:43:19,780 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:43:19,798 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:43:19,831 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:43:19,972 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:43:19,978 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:43:19,980 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:43:19,983 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:43:19,991 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:43:28,063 INFO] Step 14800/20000; acc:  88.92; ppl:  1.50; xent: 0.41; lr: 1.00000; 31737/966 tok/s;   6620 sec
+[2020-12-04 22:43:51,887 INFO] Step 14850/20000; acc:  89.63; ppl:  1.46; xent: 0.38; lr: 1.00000; 32396/959 tok/s;   6644 sec
+[2020-12-04 22:44:10,988 INFO] Step 14900/20000; acc:  90.09; ppl:  1.45; xent: 0.37; lr: 1.00000; 30018/1271 tok/s;   6663 sec
+[2020-12-04 22:44:32,360 INFO] Step 14950/20000; acc:  88.78; ppl:  1.52; xent: 0.42; lr: 1.00000; 29184/1151 tok/s;   6685 sec
+[2020-12-04 22:44:43,662 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:44:43,686 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:44:43,689 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:44:43,692 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:44:55,107 INFO] Step 15000/20000; acc:  87.89; ppl:  1.57; xent: 0.45; lr: 1.00000; 29457/1047 tok/s;   6707 sec
+[2020-12-04 22:45:11,871 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:45:11,891 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:45:17,755 INFO] Step 15050/20000; acc:  86.19; ppl:  1.67; xent: 0.51; lr: 1.00000; 31133/1044 tok/s;   6730 sec
+[2020-12-04 22:45:38,279 INFO] Step 15100/20000; acc:  85.34; ppl:  1.73; xent: 0.55; lr: 1.00000; 32004/1121 tok/s;   6751 sec
+[2020-12-04 22:45:40,533 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:46:01,286 INFO] Step 15150/20000; acc:  87.62; ppl:  1.59; xent: 0.47; lr: 1.00000; 32162/958 tok/s;   6774 sec
+[2020-12-04 22:46:23,150 INFO] Step 15200/20000; acc:  87.20; ppl:  1.61; xent: 0.48; lr: 1.00000; 31321/991 tok/s;   6795 sec
+[2020-12-04 22:46:37,908 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:46:37,912 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:46:37,929 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:46:46,875 INFO] Step 15250/20000; acc:  88.78; ppl:  1.51; xent: 0.41; lr: 1.00000; 32237/947 tok/s;   6819 sec
+[2020-12-04 22:47:07,711 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:47:07,740 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:47:07,751 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:47:07,756 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:47:07,759 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:47:07,762 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:47:07,793 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:47:11,038 INFO] Step 15300/20000; acc:  88.61; ppl:  1.51; xent: 0.41; lr: 1.00000; 31226/930 tok/s;   6843 sec
+[2020-12-04 22:47:34,132 INFO] Step 15350/20000; acc:  89.65; ppl:  1.47; xent: 0.38; lr: 1.00000; 29208/1003 tok/s;   6866 sec
+[2020-12-04 22:47:55,721 INFO] Step 15400/20000; acc:  89.92; ppl:  1.46; xent: 0.38; lr: 1.00000; 30187/1113 tok/s;   6888 sec
+[2020-12-04 22:48:16,979 INFO] Step 15450/20000; acc:  89.30; ppl:  1.50; xent: 0.40; lr: 1.00000; 29722/1155 tok/s;   6909 sec
+[2020-12-04 22:48:32,635 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:48:32,658 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:48:32,662 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:48:32,664 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:48:32,679 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:48:39,074 INFO] Step 15500/20000; acc:  87.99; ppl:  1.57; xent: 0.45; lr: 1.00000; 30048/1082 tok/s;   6931 sec
+[2020-12-04 22:48:59,777 INFO] Step 15550/20000; acc:  86.02; ppl:  1.67; xent: 0.51; lr: 1.00000; 31954/1137 tok/s;   6952 sec
+[2020-12-04 22:49:01,005 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:49:22,919 INFO] Step 15600/20000; acc:  84.90; ppl:  1.74; xent: 0.55; lr: 1.00000; 30876/1001 tok/s;   6975 sec
+[2020-12-04 22:49:29,763 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:49:45,711 INFO] Step 15650/20000; acc:  86.70; ppl:  1.65; xent: 0.50; lr: 1.00000; 30385/971 tok/s;   6998 sec
+[2020-12-04 22:50:09,371 INFO] Step 15700/20000; acc:  87.65; ppl:  1.57; xent: 0.45; lr: 1.00000; 31451/924 tok/s;   7022 sec
+[2020-12-04 22:50:28,596 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:50:28,601 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:50:28,633 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:50:28,650 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:50:33,280 INFO] Step 15750/20000; acc:  87.93; ppl:  1.55; xent: 0.44; lr: 1.00000; 32320/945 tok/s;   7046 sec
+[2020-12-04 22:50:53,486 INFO] Step 15800/20000; acc:  89.63; ppl:  1.47; xent: 0.39; lr: 1.00000; 31927/1111 tok/s;   7066 sec
+[2020-12-04 22:50:57,684 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:50:57,695 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:50:57,703 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:50:57,705 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:50:57,708 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:50:57,716 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:51:16,468 INFO] Step 15850/20000; acc:  89.47; ppl:  1.47; xent: 0.38; lr: 1.00000; 31408/1005 tok/s;   7089 sec
+[2020-12-04 22:51:38,674 INFO] Step 15900/20000; acc:  89.24; ppl:  1.48; xent: 0.39; lr: 1.00000; 30801/1061 tok/s;   7111 sec
+[2020-12-04 22:52:00,321 INFO] Step 15950/20000; acc:  89.22; ppl:  1.50; xent: 0.40; lr: 1.00000; 29744/1132 tok/s;   7133 sec
+[2020-12-04 22:52:20,480 INFO] Step 16000/20000; acc:  88.74; ppl:  1.52; xent: 0.42; lr: 1.00000; 29965/1213 tok/s;   7153 sec
+[2020-12-04 22:52:20,516 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:52:20,542 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:52:20,545 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:52:20,549 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:52:20,563 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:52:20,583 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:52:43,115 INFO] Step 16050/20000; acc:  85.52; ppl:  1.71; xent: 0.54; lr: 1.00000; 30642/1039 tok/s;   7175 sec
+[2020-12-04 22:52:49,439 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:53:05,199 INFO] Step 16100/20000; acc:  85.43; ppl:  1.72; xent: 0.54; lr: 1.00000; 30635/1029 tok/s;   7197 sec
+[2020-12-04 22:53:28,516 INFO] Step 16150/20000; acc:  86.25; ppl:  1.67; xent: 0.52; lr: 1.00000; 31113/972 tok/s;   7221 sec
+[2020-12-04 22:53:52,102 INFO] Step 16200/20000; acc:  87.64; ppl:  1.57; xent: 0.45; lr: 1.00000; 32835/927 tok/s;   7244 sec
+[2020-12-04 22:54:12,523 INFO] Step 16250/20000; acc:  87.66; ppl:  1.58; xent: 0.46; lr: 1.00000; 32313/1062 tok/s;   7265 sec
+[2020-12-04 22:54:16,122 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:54:16,126 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:54:16,145 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:54:16,164 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:54:37,080 INFO] Step 16300/20000; acc:  89.10; ppl:  1.49; xent: 0.40; lr: 1.00000; 30443/934 tok/s;   7289 sec
+[2020-12-04 22:54:46,467 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:54:46,478 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:54:46,484 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:54:46,487 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:54:46,490 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:54:46,498 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:55:00,224 INFO] Step 16350/20000; acc:  89.46; ppl:  1.48; xent: 0.39; lr: 1.00000; 30519/1001 tok/s;   7312 sec
+[2020-12-04 22:55:22,743 INFO] Step 16400/20000; acc:  89.40; ppl:  1.49; xent: 0.40; lr: 1.00000; 30885/1036 tok/s;   7335 sec
+[2020-12-04 22:55:44,918 INFO] Step 16450/20000; acc:  89.16; ppl:  1.51; xent: 0.41; lr: 1.00000; 30174/1116 tok/s;   7357 sec
+[2020-12-04 22:56:03,240 INFO] Step 16500/20000; acc:  88.98; ppl:  1.52; xent: 0.42; lr: 1.00000; 30016/1332 tok/s;   7375 sec
+[2020-12-04 22:56:08,602 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:56:08,626 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:56:08,630 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:56:08,633 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:56:08,649 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:56:08,668 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 22:56:26,036 INFO] Step 16550/20000; acc:  86.12; ppl:  1.69; xent: 0.52; lr: 1.00000; 30280/1033 tok/s;   7398 sec
+[2020-12-04 22:56:37,989 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 22:56:49,182 INFO] Step 16600/20000; acc:  85.10; ppl:  1.76; xent: 0.56; lr: 1.00000; 31562/972 tok/s;   7421 sec
+[2020-12-04 22:57:13,062 INFO] Step 16650/20000; acc:  85.48; ppl:  1.70; xent: 0.53; lr: 1.00000; 30309/956 tok/s;   7445 sec
+[2020-12-04 22:57:33,290 INFO] Step 16700/20000; acc:  87.95; ppl:  1.55; xent: 0.44; lr: 1.00000; 33358/1064 tok/s;   7466 sec
+[2020-12-04 22:57:57,193 INFO] Step 16750/20000; acc:  87.78; ppl:  1.57; xent: 0.45; lr: 1.00000; 31867/936 tok/s;   7489 sec
+[2020-12-04 22:58:05,122 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 22:58:05,131 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 22:58:05,148 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 22:58:05,165 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 22:58:05,194 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 22:58:20,815 INFO] Step 16800/20000; acc:  88.64; ppl:  1.50; xent: 0.41; lr: 1.00000; 29302/953 tok/s;   7513 sec
+[2020-12-04 22:58:35,687 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 22:58:35,693 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 22:58:35,694 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 22:58:35,698 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 22:58:35,706 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 22:58:44,547 INFO] Step 16850/20000; acc:  89.33; ppl:  1.49; xent: 0.40; lr: 1.00000; 31705/972 tok/s;   7537 sec
+[2020-12-04 22:59:07,016 INFO] Step 16900/20000; acc:  89.00; ppl:  1.50; xent: 0.41; lr: 1.00000; 31179/1047 tok/s;   7559 sec
+[2020-12-04 22:59:26,797 INFO] Step 16950/20000; acc:  88.86; ppl:  1.50; xent: 0.41; lr: 1.00000; 29672/1242 tok/s;   7579 sec
+[2020-12-04 22:59:48,487 INFO] Step 17000/20000; acc:  87.74; ppl:  1.58; xent: 0.45; lr: 1.00000; 28902/1127 tok/s;   7601 sec
+[2020-12-04 22:59:58,495 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 22:59:58,521 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 22:59:58,524 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 22:59:58,528 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 22:59:58,542 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 22:59:58,562 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 23:00:10,469 INFO] Step 17050/20000; acc:  86.65; ppl:  1.65; xent: 0.50; lr: 1.00000; 30461/1067 tok/s;   7623 sec
+[2020-12-04 23:00:27,504 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 23:00:33,791 INFO] Step 17100/20000; acc:  85.33; ppl:  1.74; xent: 0.55; lr: 1.00000; 32189/984 tok/s;   7646 sec
+[2020-12-04 23:00:54,181 INFO] Step 17150/20000; acc:  85.57; ppl:  1.70; xent: 0.53; lr: 1.00000; 32844/1103 tok/s;   7666 sec
+[2020-12-04 23:01:17,565 INFO] Step 17200/20000; acc:  88.04; ppl:  1.57; xent: 0.45; lr: 1.00000; 31787/940 tok/s;   7690 sec
+[2020-12-04 23:01:39,762 INFO] Step 17250/20000; acc:  88.03; ppl:  1.57; xent: 0.45; lr: 1.00000; 31643/977 tok/s;   7712 sec
+[2020-12-04 23:01:53,455 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 23:01:53,459 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 23:01:53,477 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 23:01:53,494 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 23:01:53,524 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 23:01:53,537 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 23:02:03,765 INFO] Step 17300/20000; acc:  88.57; ppl:  1.53; xent: 0.43; lr: 1.00000; 31313/945 tok/s;   7736 sec
+[2020-12-04 23:02:23,257 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 23:02:23,259 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 23:02:23,262 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 23:02:23,271 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 23:02:27,970 INFO] Step 17350/20000; acc:  89.20; ppl:  1.48; xent: 0.39; lr: 1.00000; 31840/948 tok/s;   7760 sec
+[2020-12-04 23:02:46,735 INFO] Step 17400/20000; acc:  89.32; ppl:  1.48; xent: 0.39; lr: 1.00000; 31434/1258 tok/s;   7779 sec
+[2020-12-04 23:03:08,214 INFO] Step 17450/20000; acc:  88.61; ppl:  1.53; xent: 0.42; lr: 1.00000; 29781/1146 tok/s;   7800 sec
+[2020-12-04 23:03:17,826 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 23:03:30,039 INFO] Step 17500/20000; acc:  88.30; ppl:  1.55; xent: 0.44; lr: 1.00000; 29924/1107 tok/s;   7822 sec
+[2020-12-04 23:03:46,525 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 23:03:46,530 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 23:03:46,532 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 23:03:46,552 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 23:03:46,571 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 23:03:53,794 INFO] Step 17550/20000; acc:  86.98; ppl:  1.62; xent: 0.48; lr: 1.00000; 28539/1008 tok/s;   7846 sec
+[2020-12-04 23:04:15,199 INFO] Step 17600/20000; acc:  85.14; ppl:  1.76; xent: 0.56; lr: 1.00000; 33094/1077 tok/s;   7867 sec
+[2020-12-04 23:04:15,262 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 23:04:37,488 INFO] Step 17650/20000; acc:  85.93; ppl:  1.68; xent: 0.52; lr: 1.00000; 30797/997 tok/s;   7890 sec
+[2020-12-04 23:04:59,913 INFO] Step 17700/20000; acc:  87.29; ppl:  1.60; xent: 0.47; lr: 1.00000; 31156/984 tok/s;   7912 sec
+[2020-12-04 23:05:22,932 INFO] Step 17750/20000; acc:  87.94; ppl:  1.57; xent: 0.45; lr: 1.00000; 32294/954 tok/s;   7935 sec
+[2020-12-04 23:05:41,184 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 23:05:41,188 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 23:05:41,206 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 23:05:41,223 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 23:05:41,251 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 23:05:41,261 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 23:05:41,267 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 23:05:41,268 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 23:05:41,272 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 23:05:41,312 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 23:05:46,506 INFO] Step 17800/20000; acc:  87.98; ppl:  1.57; xent: 0.45; lr: 1.00000; 32686/946 tok/s;   7959 sec
+[2020-12-04 23:06:07,180 INFO] Step 17850/20000; acc:  89.56; ppl:  1.47; xent: 0.38; lr: 1.00000; 32441/1106 tok/s;   7979 sec
+[2020-12-04 23:06:29,450 INFO] Step 17900/20000; acc:  89.59; ppl:  1.49; xent: 0.40; lr: 1.00000; 30906/1062 tok/s;   8002 sec
+[2020-12-04 23:06:51,258 INFO] Step 17950/20000; acc:  88.69; ppl:  1.53; xent: 0.42; lr: 1.00000; 29302/1134 tok/s;   8023 sec
+[2020-12-04 23:07:05,822 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 23:07:13,353 INFO] Step 18000/20000; acc:  87.99; ppl:  1.57; xent: 0.45; lr: 1.00000; 29372/1102 tok/s;   8046 sec
+[2020-12-04 23:07:33,109 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 23:07:33,112 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 23:07:33,116 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 23:07:33,131 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 23:07:33,151 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 23:07:35,772 INFO] Step 18050/20000; acc:  86.64; ppl:  1.66; xent: 0.51; lr: 1.00000; 31070/1061 tok/s;   8068 sec
+[2020-12-04 23:07:56,012 INFO] Step 18100/20000; acc:  84.99; ppl:  1.76; xent: 0.56; lr: 1.00000; 31788/1140 tok/s;   8088 sec
+[2020-12-04 23:08:01,694 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 23:08:18,185 INFO] Step 18150/20000; acc:  86.32; ppl:  1.65; xent: 0.50; lr: 1.00000; 31818/1006 tok/s;   8110 sec
+[2020-12-04 23:08:41,254 INFO] Step 18200/20000; acc:  86.73; ppl:  1.63; xent: 0.49; lr: 1.00000; 31933/955 tok/s;   8133 sec
+[2020-12-04 23:08:58,724 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 23:09:04,549 INFO] Step 18250/20000; acc:  87.85; ppl:  1.56; xent: 0.44; lr: 1.00000; 32287/954 tok/s;   8157 sec
+[2020-12-04 23:09:25,686 INFO] Step 18300/20000; acc:  88.58; ppl:  1.53; xent: 0.43; lr: 1.00000; 31737/1045 tok/s;   8178 sec
+[2020-12-04 23:09:28,186 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 23:09:28,204 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 23:09:28,223 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 23:09:28,254 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 23:09:28,266 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 23:09:28,272 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 23:09:28,273 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 23:09:28,278 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 23:09:28,287 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 23:09:50,214 INFO] Step 18350/20000; acc:  89.62; ppl:  1.46; xent: 0.38; lr: 1.00000; 31570/941 tok/s;   8202 sec
+[2020-12-04 23:10:11,681 INFO] Step 18400/20000; acc:  89.21; ppl:  1.49; xent: 0.40; lr: 1.00000; 30181/1080 tok/s;   8224 sec
+[2020-12-04 23:10:33,557 INFO] Step 18450/20000; acc:  88.74; ppl:  1.53; xent: 0.43; lr: 1.00000; 30553/1125 tok/s;   8246 sec
+[2020-12-04 23:10:51,821 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 23:10:51,844 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 23:10:51,848 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 23:10:51,851 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 23:10:54,962 INFO] Step 18500/20000; acc:  88.46; ppl:  1.53; xent: 0.43; lr: 1.00000; 30201/1154 tok/s;   8267 sec
+[2020-12-04 23:11:14,842 INFO] Step 18550/20000; acc:  86.64; ppl:  1.66; xent: 0.50; lr: 1.00000; 31087/1193 tok/s;   8287 sec
+[2020-12-04 23:11:19,500 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 23:11:19,519 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 23:11:37,635 INFO] Step 18600/20000; acc:  84.98; ppl:  1.75; xent: 0.56; lr: 1.00000; 30873/1005 tok/s;   8310 sec
+[2020-12-04 23:11:48,617 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 23:12:00,542 INFO] Step 18650/20000; acc:  86.20; ppl:  1.68; xent: 0.52; lr: 1.00000; 30604/983 tok/s;   8333 sec
+[2020-12-04 23:12:23,824 INFO] Step 18700/20000; acc:  86.69; ppl:  1.64; xent: 0.49; lr: 1.00000; 32046/951 tok/s;   8356 sec
+[2020-12-04 23:12:44,550 INFO] Step 18750/20000; acc:  88.13; ppl:  1.56; xent: 0.44; lr: 1.00000; 33647/1056 tok/s;   8377 sec
+[2020-12-04 23:12:46,020 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 23:12:46,026 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 23:13:08,140 INFO] Step 18800/20000; acc:  88.43; ppl:  1.54; xent: 0.43; lr: 1.00000; 31697/964 tok/s;   8400 sec
+[2020-12-04 23:13:14,957 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 23:13:14,975 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 23:13:15,005 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 23:13:15,016 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 23:13:15,022 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 23:13:15,023 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 23:13:15,026 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 23:13:15,034 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 23:13:30,812 INFO] Step 18850/20000; acc:  88.60; ppl:  1.53; xent: 0.43; lr: 1.00000; 31486/988 tok/s;   8423 sec
+[2020-12-04 23:13:53,549 INFO] Step 18900/20000; acc:  88.92; ppl:  1.52; xent: 0.42; lr: 1.00000; 31789/1029 tok/s;   8446 sec
+[2020-12-04 23:14:15,909 INFO] Step 18950/20000; acc:  88.94; ppl:  1.51; xent: 0.41; lr: 1.00000; 29866/1099 tok/s;   8468 sec
+[2020-12-04 23:14:34,487 INFO] Step 19000/20000; acc:  88.22; ppl:  1.57; xent: 0.45; lr: 1.00000; 29283/1319 tok/s;   8487 sec
+[2020-12-04 23:14:38,412 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 23:14:38,435 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 23:14:38,439 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 23:14:38,441 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 23:14:56,636 INFO] Step 19050/20000; acc:  86.47; ppl:  1.64; xent: 0.50; lr: 1.00000; 30163/1075 tok/s;   8509 sec
+[2020-12-04 23:15:06,419 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 23:15:06,439 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 23:15:19,198 INFO] Step 19100/20000; acc:  85.36; ppl:  1.73; xent: 0.55; lr: 1.00000; 30997/1024 tok/s;   8531 sec
+[2020-12-04 23:15:35,107 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 23:15:42,231 INFO] Step 19150/20000; acc:  85.33; ppl:  1.75; xent: 0.56; lr: 1.00000; 31565/988 tok/s;   8554 sec
+[2020-12-04 23:16:04,847 INFO] Step 19200/20000; acc:  86.78; ppl:  1.63; xent: 0.49; lr: 1.00000; 31351/970 tok/s;   8577 sec
+[2020-12-04 23:16:27,798 INFO] Step 19250/20000; acc:  87.38; ppl:  1.60; xent: 0.47; lr: 1.00000; 31269/956 tok/s;   8600 sec
+[2020-12-04 23:16:34,374 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 23:16:34,379 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 23:16:34,397 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 23:16:51,205 INFO] Step 19300/20000; acc:  88.81; ppl:  1.50; xent: 0.41; lr: 1.00000; 30334/962 tok/s;   8623 sec
+[2020-12-04 23:17:04,420 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 23:17:04,451 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 23:17:04,462 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 23:17:04,467 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 23:17:04,470 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 23:17:04,473 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 23:17:04,481 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 23:17:14,934 INFO] Step 19350/20000; acc:  88.27; ppl:  1.54; xent: 0.43; lr: 1.00000; 31570/966 tok/s;   8647 sec
+[2020-12-04 23:17:38,526 INFO] Step 19400/20000; acc:  89.23; ppl:  1.50; xent: 0.40; lr: 1.00000; 31894/981 tok/s;   8671 sec
+[2020-12-04 23:17:57,141 INFO] Step 19450/20000; acc:  89.26; ppl:  1.47; xent: 0.38; lr: 1.00000; 30140/1286 tok/s;   8689 sec
+[2020-12-04 23:18:18,916 INFO] Step 19500/20000; acc:  88.25; ppl:  1.55; xent: 0.44; lr: 1.00000; 29558/1144 tok/s;   8711 sec
+[2020-12-04 23:18:27,185 WARNING] Empty line exists in corpus_1#12733.
+[2020-12-04 23:18:27,208 WARNING] Empty line exists in corpus_1#13206.
+[2020-12-04 23:18:27,212 WARNING] Empty line exists in corpus_1#13284.
+[2020-12-04 23:18:27,214 WARNING] Empty line exists in corpus_1#13341.
+[2020-12-04 23:18:27,254 WARNING] Empty line exists in corpus_1#13666.
+[2020-12-04 23:18:40,893 INFO] Step 19550/20000; acc:  86.72; ppl:  1.63; xent: 0.49; lr: 1.00000; 29986/1064 tok/s;   8733 sec
+[2020-12-04 23:18:55,516 WARNING] Empty line exists in corpus_1#14070.
+[2020-12-04 23:19:03,439 INFO] Step 19600/20000; acc:  85.39; ppl:  1.74; xent: 0.55; lr: 1.00000; 31232/1036 tok/s;   8756 sec
+[2020-12-04 23:19:24,709 INFO] Loading ParallelCorpus(data/dataset1_train_src_trunc.txt, data/dataset1_train_tgt.txt, align=None)...
+[2020-12-04 23:19:27,370 INFO] Step 19650/20000; acc:  84.32; ppl:  1.81; xent: 0.59; lr: 1.00000; 30506/973 tok/s;   8780 sec
+[2020-12-04 23:19:47,462 INFO] Step 19700/20000; acc:  87.30; ppl:  1.60; xent: 0.47; lr: 1.00000; 32771/1084 tok/s;   8800 sec
+[2020-12-04 23:20:10,644 INFO] Step 19750/20000; acc:  87.62; ppl:  1.58; xent: 0.46; lr: 1.00000; 31495/947 tok/s;   8823 sec
+[2020-12-04 23:20:22,553 WARNING] Empty line exists in corpus_1#5087.
+[2020-12-04 23:20:22,557 WARNING] Empty line exists in corpus_1#5173.
+[2020-12-04 23:20:22,574 WARNING] Empty line exists in corpus_1#5515.
+[2020-12-04 23:20:22,591 WARNING] Empty line exists in corpus_1#5854.
+[2020-12-04 23:20:33,857 INFO] Step 19800/20000; acc:  88.17; ppl:  1.56; xent: 0.44; lr: 1.00000; 32188/971 tok/s;   8846 sec
+[2020-12-04 23:20:51,593 WARNING] Empty line exists in corpus_1#6397.
+[2020-12-04 23:20:51,604 WARNING] Empty line exists in corpus_1#6612.
+[2020-12-04 23:20:51,610 WARNING] Empty line exists in corpus_1#6705.
+[2020-12-04 23:20:51,611 WARNING] Empty line exists in corpus_1#6736.
+[2020-12-04 23:20:51,614 WARNING] Empty line exists in corpus_1#6808.
+[2020-12-04 23:20:51,622 WARNING] Empty line exists in corpus_1#6954.
+[2020-12-04 23:20:57,466 INFO] Step 19850/20000; acc:  88.55; ppl:  1.52; xent: 0.42; lr: 1.00000; 31712/952 tok/s;   8870 sec
+[2020-12-04 23:21:18,195 INFO] Step 19900/20000; acc:  89.13; ppl:  1.50; xent: 0.41; lr: 1.00000; 32421/1122 tok/s;   8890 sec
+[2020-12-04 23:21:41,320 INFO] Step 19950/20000; acc:  88.83; ppl:  1.51; xent: 0.41; lr: 1.00000; 29004/1057 tok/s;   8914 sec
+[2020-12-04 23:22:03,504 INFO] Step 20000/20000; acc:  88.86; ppl:  1.52; xent: 0.42; lr: 1.00000; 26524/1094 tok/s;   8936 sec
+[2020-12-04 23:22:03,506 INFO] Loading ParallelCorpus(data/dataset1_val_src_trunc.txt, data/dataset1_val_tgt.txt, align=None)...
+[2020-12-04 23:22:03,600 WARNING] Empty line exists in valid#1826.
+[2020-12-04 23:22:25,095 WARNING] Empty line exists in valid#3819.
+[2020-12-04 23:22:25,097 WARNING] Empty line exists in valid#3879.
+[2020-12-04 23:22:47,288 INFO] Validation perplexity: 2.8026
+[2020-12-04 23:22:47,289 INFO] Validation accuracy: 80.5188
+[2020-12-04 23:22:48,642 INFO] Saving checkpoint /home/ubuntu/model_step_20000.pt
